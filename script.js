@@ -1,5 +1,3 @@
-alert("script loaded");
-
 let currentDifficulty = "easy";
 let currentQuestionIndex = 0;
 
