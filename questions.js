@@ -32,6 +32,54 @@ const questions = {
       ],
 
       answer: 2
+    },
+
+    {
+      section: "Pattern Recognition",
+
+      question:
+        "A teacher notices students score higher after short review games before tests. What pattern is MOST likely happening?",
+
+      options: [
+        "Games reduce stress and improve memory recall",
+        "Students randomly guessed correctly",
+        "Tests became easier",
+        "Reviewing never matters"
+      ],
+
+      answer: 0
+    },
+
+    {
+      section: "Pattern Recognition",
+
+      question:
+        "A store places candy near the checkout line and sales increase. Why?",
+
+      options: [
+        "People buy impulsively while waiting",
+        "Candy becomes cheaper near registers",
+        "Checkout lines cause hunger",
+        "People only buy candy at night"
+      ],
+
+      answer: 0
+    },
+
+    {
+      section: "Pattern Recognition",
+
+      question:
+        "A basketball team performs better when one player encourages teammates constantly. What pattern is MOST likely occurring?",
+
+      options: [
+        "Positive communication improves morale and teamwork",
+        "The player scores all the points",
+        "Encouragement has no impact",
+        "The referees changed behavior"
+      ],
+
+      answer: 0
     }
 
   ],
@@ -68,6 +116,54 @@ const questions = {
       ],
 
       answer: 2
+    },
+
+    {
+      section: "Pattern Recognition",
+
+      question:
+        "A company notices productivity increases after employees gain more control over schedules. What pattern is MOST likely occurring?",
+
+      options: [
+        "Autonomy increases motivation",
+        "Employees work less",
+        "Schedules do not matter",
+        "Workers became afraid"
+      ],
+
+      answer: 0
+    },
+
+    {
+      section: "Pattern Recognition",
+
+      question:
+        "A student consistently misses easy questions but solves harder ones correctly. What pattern is MOST likely true?",
+
+      options: [
+        "The student performs poorly overall",
+        "The student rushes simple tasks but focuses on difficult ones",
+        "Hard questions are easier",
+        "The grading system is broken"
+      ],
+
+      answer: 1
+    },
+
+    {
+      section: "Pattern Recognition",
+
+      question:
+        "A restaurant receives better reviews after reducing menu size. Why might this happen?",
+
+      options: [
+        "Smaller menus often improve consistency and decision-making",
+        "Customers dislike choices",
+        "Large menus are illegal",
+        "Food quality never changes"
+      ],
+
+      answer: 0
     }
 
   ],
@@ -101,6 +197,54 @@ const questions = {
         "Short-term metrics improved while real learning weakened",
         "Testing should be eliminated",
         "Grades never matter"
+      ],
+
+      answer: 1
+    },
+
+    {
+      section: "Pattern Recognition",
+
+      question:
+        "A business tracks employee hours carefully but ignores burnout and turnover. Profits rise briefly, then collapse. What hidden system failure is MOST likely responsible?",
+
+      options: [
+        "Burnout damaged long-term productivity and retention",
+        "Employees became lazy suddenly",
+        "Tracking hours always fails",
+        "Profits naturally disappear"
+      ],
+
+      answer: 0
+    },
+
+    {
+      section: "Pattern Recognition",
+
+      question:
+        "An organization rewards employees for individual performance only. Team collaboration steadily declines. Why?",
+
+      options: [
+        "People respond to incentives that prioritize individual success",
+        "Collaboration is unnecessary",
+        "Employees dislike teamwork naturally",
+        "Managers caused confusion accidentally"
+      ],
+
+      answer: 0
+    },
+
+    {
+      section: "Pattern Recognition",
+
+      question:
+        "A city adds more highway lanes to reduce traffic, but congestion returns within two years. What pattern is MOST likely happening?",
+
+      options: [
+        "Roads always fail",
+        "More roads encourage more driving demand over time",
+        "Traffic is random",
+        "Cities should ban highways"
       ],
 
       answer: 1
