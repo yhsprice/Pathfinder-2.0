@@ -1,23 +1,21 @@
 let currentQuestion = 0;
 let score = 0;
 let currentShuffledOptions = [];
+let answered = false;
 
 const startBtn = document.getElementById("startBtn");
 
 startBtn.addEventListener("click", startQuiz);
 
 function startQuiz() {
-  const homeScreen = document.querySelector(".home-screen");
-  showQuestion(homeScreen);
+  showQuestion(document.querySelector(".home-screen"));
 }
 
 function shuffleOptions(question) {
-  const optionsWithIndex = question.options.map((option, index) => {
-    return {
-      text: option,
-      originalIndex: index
-    };
-  });
+  const optionsWithIndex = question.options.map((option, index) => ({
+    text: option,
+    originalIndex: index
+  }));
 
   for (let i = optionsWithIndex.length - 1; i > 0; i--) {
     const randomIndex = Math.floor(Math.random() * (i + 1));
@@ -29,18 +27,23 @@ function shuffleOptions(question) {
 }
 
 function showQuestion(container) {
+  answered = false;
+
   const q = questions[currentQuestion];
+  const progressPercent = Math.round((currentQuestion / questions.length) * 100);
 
   currentShuffledOptions = shuffleOptions(q);
 
   container.innerHTML = `
-
     <div class="quiz-container">
-
       <div class="question-card">
 
         <div class="progress-text">
           Question ${currentQuestion + 1} of ${questions.length}
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${progressPercent}%"></div>
         </div>
 
         <h2>${q.section}</h2>
@@ -61,55 +64,76 @@ function showQuestion(container) {
           `).join("")}
         </div>
 
+        <div id="feedbackBox"></div>
+
       </div>
-
     </div>
-
   `;
 }
 
 function selectAnswer(selectedIndex) {
+  if (answered) return;
+  answered = true;
+
   const q = questions[currentQuestion];
   const selectedOption = currentShuffledOptions[selectedIndex];
+  const buttons = document.querySelectorAll(".answer-btn");
+  const feedbackBox = document.getElementById("feedbackBox");
+
+  buttons.forEach((button, index) => {
+    button.classList.add("disabled");
+
+    if (currentShuffledOptions[index].originalIndex === q.answer) {
+      button.classList.add("correct");
+    }
+  });
 
   if (selectedOption.originalIndex === q.answer) {
     score++;
+    buttons[selectedIndex].classList.add("correct");
+    feedbackBox.innerHTML = `
+      <div class="feedback-box">
+        Correct. You spotted the pattern.
+      </div>
+    `;
+  } else {
+    buttons[selectedIndex].classList.add("incorrect");
+    feedbackBox.innerHTML = `
+      <div class="feedback-box">
+        Not quite. Pathfinder is looking for the most likely hidden pattern, not just a possible explanation.
+      </div>
+    `;
   }
 
-  currentQuestion++;
+  setTimeout(() => {
+    currentQuestion++;
 
-  if (currentQuestion >= questions.length) {
-    showResults();
-    return;
-  }
-
-  showQuestion(document.querySelector(".home-screen"));
+    if (currentQuestion >= questions.length) {
+      showResults();
+    } else {
+      showQuestion(document.querySelector(".home-screen"));
+    }
+  }, 1300);
 }
 
 function showResults() {
   const container = document.querySelector(".home-screen");
-
   const percent = Math.round((score / questions.length) * 100);
 
   let message = "";
 
   if (percent >= 90) {
     message = "Exceptional pattern recognition.";
-  }
-  else if (percent >= 70) {
+  } else if (percent >= 70) {
     message = "Strong analytical thinking.";
-  }
-  else if (percent >= 50) {
+  } else if (percent >= 50) {
     message = "Developing pattern recognition skills.";
-  }
-  else {
+  } else {
     message = "You may perform better with hands-on or experiential learning.";
   }
 
   container.innerHTML = `
-
     <div class="results-card">
-
       <h1>Your Results</h1>
 
       <div class="score-circle">
@@ -126,9 +150,7 @@ function showResults() {
       <button onclick="restartQuiz()">
         Try Again
       </button>
-
     </div>
-
   `;
 }
 
