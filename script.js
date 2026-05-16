@@ -1,26 +1,47 @@
 let currentQuestion = 0;
 let score = 0;
+let currentShuffledOptions = [];
 
 const startBtn = document.getElementById("startBtn");
 
 startBtn.addEventListener("click", startQuiz);
 
 function startQuiz() {
-
   const homeScreen = document.querySelector(".home-screen");
-
   showQuestion(homeScreen);
 }
 
-function showQuestion(container) {
+function shuffleOptions(question) {
+  const optionsWithIndex = question.options.map((option, index) => {
+    return {
+      text: option,
+      originalIndex: index
+    };
+  });
 
+  for (let i = optionsWithIndex.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [optionsWithIndex[i], optionsWithIndex[randomIndex]] =
+      [optionsWithIndex[randomIndex], optionsWithIndex[i]];
+  }
+
+  return optionsWithIndex;
+}
+
+function showQuestion(container) {
   const q = questions[currentQuestion];
+
+  currentShuffledOptions = shuffleOptions(q);
 
   container.innerHTML = `
 
     <div class="quiz-container">
 
       <div class="question-card">
+
+        <div class="progress-text">
+          Question ${currentQuestion + 1} of ${questions.length}
+        </div>
 
         <h2>${q.section}</h2>
 
@@ -33,9 +54,9 @@ function showQuestion(container) {
         </h3>
 
         <div class="answers">
-          ${q.options.map((option, index) => `
+          ${currentShuffledOptions.map((option, index) => `
             <button class="answer-btn" onclick="selectAnswer(${index})">
-              ${option}
+              ${option.text}
             </button>
           `).join("")}
         </div>
@@ -47,11 +68,11 @@ function showQuestion(container) {
   `;
 }
 
-function selectAnswer(selected) {
-
+function selectAnswer(selectedIndex) {
   const q = questions[currentQuestion];
+  const selectedOption = currentShuffledOptions[selectedIndex];
 
-  if (selected === q.answer) {
+  if (selectedOption.originalIndex === q.answer) {
     score++;
   }
 
@@ -66,7 +87,6 @@ function selectAnswer(selected) {
 }
 
 function showResults() {
-
   const container = document.querySelector(".home-screen");
 
   const percent = Math.round((score / questions.length) * 100);
@@ -115,6 +135,5 @@ function showResults() {
 function restartQuiz() {
   currentQuestion = 0;
   score = 0;
-
   location.reload();
 }
