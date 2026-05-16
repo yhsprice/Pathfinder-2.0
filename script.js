@@ -1,6 +1,9 @@
 let currentDifficulty = "easy";
 
 let score = 0;
+let traits = {
+  systemsThinking: 0
+};
 let totalQuestions = 0;
 let maxQuestions = 10;
 
@@ -126,7 +129,10 @@ function selectAnswer(selectedIndex) {
   });
 
   if (correct) {
-    score++;
+
+  score++;
+
+  traits[currentQuestion.trait]++;
     buttons[selectedIndex].classList.add("correct");
 
     feedbackBox.innerHTML = `
@@ -199,8 +205,14 @@ function showResults() {
       <h2>${message}</h2>
 
       <p>
-        Pathfinder tracked how you recognized systems, causes, and hidden patterns.
-      </p>
+  Systems Thinking Score:
+  ${traits.systemsThinking}
+</p>
+
+<p>
+  Pathfinder tracked how you recognized systems,
+  causes, and hidden behavioral patterns.
+</p>
 
       <button onclick="restartQuiz()">
         Try Again
