@@ -15,7 +15,9 @@ const questions = {
         "The student dislikes school"
       ],
 
-      answer: 1
+      answer: 1,
+
+      trait: "systemsThinking"
     },
 
     {
@@ -31,7 +33,9 @@ const questions = {
         "The business should ignore customers"
       ],
 
-      answer: 2
+      answer: 2,
+      
+      trait: "systemsThinking"
     },
 
     {
@@ -47,7 +51,10 @@ const questions = {
         "Reviewing never matters"
       ],
 
-      answer: 0
+      answer: 0,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -63,7 +70,10 @@ const questions = {
         "People only buy candy at night"
       ],
 
-      answer: 0
+      answer: 0,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -79,7 +89,10 @@ const questions = {
         "The referees changed behavior"
       ],
 
-      answer: 0
+      answer: 0,
+
+      trait: "systemsThinking"
+      
     }
 
   ],
@@ -99,7 +112,10 @@ const questions = {
         "The team dislikes working"
       ],
 
-      answer: 1
+      answer: 1,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -115,7 +131,10 @@ const questions = {
         "The mechanic is imagining patterns"
       ],
 
-      answer: 2
+      answer: 2,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -131,7 +150,10 @@ const questions = {
         "Workers became afraid"
       ],
 
-      answer: 0
+      answer: 0,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -147,7 +169,10 @@ const questions = {
         "The grading system is broken"
       ],
 
-      answer: 1
+      answer: 1,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -163,7 +188,10 @@ const questions = {
         "Food quality never changes"
       ],
 
-      answer: 0
+      answer: 0,
+
+      trait: "systemsThinking"
+      
     }
 
   ],
@@ -183,7 +211,10 @@ const questions = {
         "Employees optimize behavior around rewards"
       ],
 
-      answer: 3
+      answer: 3,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -199,7 +230,10 @@ const questions = {
         "Grades never matter"
       ],
 
-      answer: 1
+      answer: 1,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -215,7 +249,10 @@ const questions = {
         "Profits naturally disappear"
       ],
 
-      answer: 0
+      answer: 0,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -231,7 +268,10 @@ const questions = {
         "Managers caused confusion accidentally"
       ],
 
-      answer: 0
+      answer: 0,
+
+      trait: "systemsThinking"
+      
     },
 
     {
@@ -247,7 +287,10 @@ const questions = {
         "Cities should ban highways"
       ],
 
-      answer: 1
+      answer: 1,
+
+      trait: "systemsThinking"
+      
     }
 
   ]
