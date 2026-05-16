@@ -2,7 +2,7 @@ let currentDifficulty = "easy";
 
 let score = 0;
 let totalQuestions = 0;
-let maxQuestions = 6;
+let maxQuestions = 10;
 
 let usedQuestions = {
   easy: [],
