@@ -225,3 +225,7 @@ function showResults() {
 function restartQuiz() {
   location.reload();
 }
+
+function startSection(sectionId) {
+  alert("Starting section: " + sectionId);
+}
