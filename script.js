@@ -18,18 +18,10 @@ let currentQuestionIndex = null;
 let currentShuffledOptions = [];
 let answered = false;
 
-const startBtn = document.getElementById("startBtn");
-
-if (startBtn) {
-  startBtn.addEventListener("click", startQuiz);
-}
-
-function startQuiz() {
-  showQuestion();
-}
-
 function getRandomQuestion() {
-  const pool = questions[currentDifficulty];
+  const pool = questions[currentDifficulty].filter(
+  question => question.sectionId === activeSection
+);
 
   let availableIndexes = pool
     .map((question, index) => index)
@@ -226,6 +218,22 @@ function restartQuiz() {
   location.reload();
 }
 
+let activeSection = null;
+
 function startSection(sectionId) {
-  alert("Starting section: " + sectionId);
+
+  activeSection = sectionId;
+
+  currentDifficulty = "easy";
+
+  score = 0;
+  totalQuestions = 0;
+
+  usedQuestions = {
+    easy: [],
+    medium: [],
+    hard: []
+  };
+
+  showQuestion();
 }
