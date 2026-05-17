@@ -3,8 +3,8 @@ const questions = {
   easy: [
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A student studies better with music but performs worse on timed tests while music plays. What pattern is MOST likely happening?",
 
@@ -21,8 +21,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A business lowers prices every month, but profits continue dropping. What is the BEST explanation?",
 
@@ -39,8 +39,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A teacher notices students score higher after short review games before tests. What pattern is MOST likely happening?",
 
@@ -58,8 +58,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A store places candy near the checkout line and sales increase. Why?",
 
@@ -77,8 +77,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A basketball team performs better when one player encourages teammates constantly. What pattern is MOST likely occurring?",
 
@@ -100,8 +100,8 @@ const questions = {
   medium: [
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A team works efficiently when roles are assigned clearly but struggles when everyone shares responsibility equally. What pattern is MOST likely true?",
 
@@ -119,8 +119,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A mechanic notices one machine breaks every Friday afternoon. What is the MOST intelligent first assumption?",
 
@@ -138,8 +138,9 @@ const questions = {
     },
 
     {
+     
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A company notices productivity increases after employees gain more control over schedules. What pattern is MOST likely occurring?",
 
@@ -157,8 +158,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A student consistently misses easy questions but solves harder ones correctly. What pattern is MOST likely true?",
 
@@ -176,8 +177,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A restaurant receives better reviews after reducing menu size. Why might this happen?",
 
@@ -199,8 +200,8 @@ const questions = {
   hard: [
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A company rewards speed over accuracy. Customer complaints rise sharply after productivity bonuses are introduced. What hidden pattern is MOST likely responsible?",
 
@@ -218,8 +219,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A school improves grades by making exams easier, but long-term student performance declines. What systemic pattern is MOST likely occurring?",
 
@@ -237,8 +238,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A business tracks employee hours carefully but ignores burnout and turnover. Profits rise briefly, then collapse. What hidden system failure is MOST likely responsible?",
 
@@ -256,8 +257,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "An organization rewards employees for individual performance only. Team collaboration steadily declines. Why?",
 
@@ -275,8 +276,8 @@ const questions = {
     },
 
     {
+      sectionId: "patternRecognition",
       section: "Pattern Recognition",
-
       question:
         "A city adds more highway lanes to reduce traffic, but congestion returns within two years. What pattern is MOST likely happening?",
 
