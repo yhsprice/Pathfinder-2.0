@@ -7,11 +7,7 @@ let traits = {
 let totalQuestions = 0;
 let maxQuestions = 10;
 
-let usedQuestions = {
-  easy: [],
-  medium: [],
-  hard: []
-};
+let usedQuestions = [];
 
 let currentQuestion = null;
 let currentQuestionIndex = null;
@@ -19,25 +15,33 @@ let currentShuffledOptions = [];
 let answered = false;
 
 function getRandomQuestion() {
-  const pool = questions[currentDifficulty].filter(
-  question => question.sectionId === activeSection
-);
+  let pool = questions[currentDifficulty].filter(
+    question =>
+      question.sectionId === activeSection &&
+      !usedQuestions.includes(question.question)
+  );
 
-  let availableIndexes = pool
-    .map((question, index) => index)
-    .filter(index => !usedQuestions[currentDifficulty].includes(index));
-
-  if (availableIndexes.length === 0) {
-    usedQuestions[currentDifficulty] = [];
-    availableIndexes = pool.map((question, index) => index);
+  if (pool.length === 0) {
+    pool = ["easy", "medium", "hard"]
+      .flatMap(level => questions[level])
+      .filter(
+        question =>
+          question.sectionId === activeSection &&
+          !usedQuestions.includes(question.question)
+      );
   }
 
-  const randomPosition = Math.floor(Math.random() * availableIndexes.length);
-  currentQuestionIndex = availableIndexes[randomPosition];
+  if (pool.length === 0) {
+    showResults();
+    return null;
+  }
 
-  usedQuestions[currentDifficulty].push(currentQuestionIndex);
+  const randomIndex = Math.floor(Math.random() * pool.length);
+  const selectedQuestion = pool[randomIndex];
 
-  return pool[currentQuestionIndex];
+  usedQuestions.push(selectedQuestion.question);
+
+  return selectedQuestion;
 }
 
 function showQuestion() {
@@ -49,7 +53,10 @@ function showQuestion() {
   }
 
   currentQuestion = getRandomQuestion();
-  currentShuffledOptions = shuffleOptions(currentQuestion);
+
+if (!currentQuestion) return;
+
+currentShuffledOptions = shuffleOptions(currentQuestion);
 
   const progressPercent = Math.round((totalQuestions / maxQuestions) * 100);
   const container = document.querySelector(".home-screen");
@@ -229,11 +236,7 @@ function startSection(sectionId) {
   score = 0;
   totalQuestions = 0;
 
-  usedQuestions = {
-    easy: [],
-    medium: [],
-    hard: []
-  };
+  usedQuestions = [];
 
   showQuestion();
 }
