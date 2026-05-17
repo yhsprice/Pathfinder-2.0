@@ -246,3 +246,11 @@ body {
   font-weight: bold;
   margin: 30px auto;
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: rgba(59,130,246,0.18);
+}
