@@ -238,5 +238,37 @@ function startSection(sectionId) {
 
   usedQuestions = [];
 
-  showQuestion();
+ const hasQuestions = ["easy", "medium", "hard"].some(level =>
+  questions[level].some(question => question.sectionId === activeSection)
+);
+
+if (!hasQuestions) {
+  showComingSoon(sectionId);
+  return;
+}
+
+showQuestion();
+}
+
+function showComingSoon(sectionId) {
+  const section = pathfinderSections.find(item => item.id === sectionId);
+  const title = section ? section.title : "This Section";
+
+  const container = document.querySelector(".home-screen");
+
+  container.innerHTML = `
+    <div class="results-card">
+      <h1>${title}</h1>
+
+      <h2>Coming Soon</h2>
+
+      <p>
+        This section is part of the Pathfinder 2.0 framework, but the question bank has not been added yet.
+      </p>
+
+      <button onclick="location.reload()">
+        Back to Home
+      </button>
+    </div>
+  `;
 }
