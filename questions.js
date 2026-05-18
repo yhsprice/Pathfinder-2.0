@@ -432,9 +432,7 @@ const questions = {
   options: ["2 hours", "3 hours", "4 hours", "12 hours"],
   answer: 1,
   trait: "numberSense"
-}
-
-  ],
+},
 {
   sectionId: "focusDetail",
   section: "Focus, Detail & Error Detection",
@@ -458,7 +456,9 @@ const questions = {
     "85439217",
     "85439217"
   ],
-  answer: 1,
+ answer: 1,
   trait: "errorDetection"
 }
+
+  ]
 };
