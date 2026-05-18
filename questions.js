@@ -122,6 +122,32 @@ const questions = {
   options: ["$10", "$20", "$30", "$35"],
   answer: 2,
   trait: "numberSense"
+},
+{
+  sectionId: "focusDetail",
+  section: "Focus, Detail & Error Detection",
+  question: "Which word is spelled incorrectly?",
+  options: [
+    "Necessary",
+    "Definately",
+    "Separate",
+    "Calendar"
+  ],
+  answer: 1,
+  trait: "attentionToDetail"
+},
+{
+  sectionId: "focusDetail",
+  section: "Focus, Detail & Error Detection",
+  question: "Which number appears twice?",
+  options: [
+    "4, 7, 9, 2, 6, 7, 1",
+    "5, 3, 8, 1, 4, 9, 2",
+    "6, 1, 3, 8, 5, 2, 4",
+    "9, 2, 7, 5, 1, 6, 3"
+  ],
+  answer: 0,
+  trait: "errorDetection"
 }
     
   ],
@@ -254,6 +280,32 @@ const questions = {
   options: ["3/8", "0.40", "35%", "0.33"],
   answer: 1,
   trait: "numberSense"
+},
+{
+  sectionId: "focusDetail",
+  section: "Focus, Detail & Error Detection",
+  question: "Which sentence contains a punctuation error?",
+  options: [
+    "After lunch, we returned to class.",
+    "The dog barked loudly at the mailman.",
+    "Before leaving she grabbed her keys.",
+    "My favorite subjects are math and science."
+  ],
+  answer: 2,
+  trait: "attentionToDetail"
+},
+{
+  sectionId: "focusDetail",
+  section: "Focus, Detail & Error Detection",
+  question: "Which line has a mismatch?",
+  options: [
+    "A4582 - Blue",
+    "B3177 - Green",
+    "C8841 - Grean",
+    "D2209 - Yellow"
+  ],
+  answer: 2,
+  trait: "errorDetection"
 }
   ],
 
@@ -382,5 +434,31 @@ const questions = {
   trait: "numberSense"
 }
 
-  ]
+  ],
+{
+  sectionId: "focusDetail",
+  section: "Focus, Detail & Error Detection",
+  question: "Which sentence is grammatically incorrect?",
+  options: [
+    "Neither of the students was prepared.",
+    "Everyone in the group has finished.",
+    "The list of items are on the desk.",
+    "Each employee received a schedule."
+  ],
+  answer: 2,
+  trait: "attentionToDetail"
+},
+{
+  sectionId: "focusDetail",
+  section: "Focus, Detail & Error Detection",
+  question: "Find the subtle difference:",
+  options: [
+    "85439217",
+    "85439271",
+    "85439217",
+    "85439217"
+  ],
+  answer: 1,
+  trait: "errorDetection"
+}
 };
