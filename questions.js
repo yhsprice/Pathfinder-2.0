@@ -3,7 +3,7 @@ const questions = {
   easy: [
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A student studies better with music but performs worse on timed tests while music plays. What pattern is MOST likely happening?",
@@ -18,7 +18,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A business lowers prices every month, but profits continue dropping. What is the BEST explanation?",
@@ -33,7 +33,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A teacher notices students score higher after short review games before tests. What pattern is MOST likely happening?",
@@ -48,7 +48,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A store places candy near the checkout line and sales increase. Why?",
@@ -63,7 +63,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A basketball team performs better when one player encourages teammates constantly. What pattern is MOST likely occurring?",
@@ -78,7 +78,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "You are helping plan an event, but the speaker cancels the morning of the event. What should you do FIRST?",
@@ -93,7 +93,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A printer stops working right before a meeting. What is the BEST first step?",
@@ -108,7 +108,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "Your group has too many tasks and not enough time. What is the smartest move?",
@@ -123,7 +123,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A customer is upset because an order is wrong. What should happen first?",
@@ -138,7 +138,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "You are given instructions that are confusing. What is the BEST response?",
@@ -157,7 +157,7 @@ const questions = {
   medium: [
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A team works efficiently when roles are assigned clearly but struggles when everyone shares responsibility equally. What pattern is MOST likely true?",
@@ -172,7 +172,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A mechanic notices one machine breaks every Friday afternoon. What is the MOST intelligent first assumption?",
@@ -187,7 +187,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A company notices productivity increases after employees gain more control over schedules. What pattern is MOST likely occurring?",
@@ -202,7 +202,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A student consistently misses easy questions but solves harder ones correctly. What pattern is MOST likely true?",
@@ -217,7 +217,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A restaurant receives better reviews after reducing menu size. Why might this happen?",
@@ -232,7 +232,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A school club keeps losing members because meetings feel unorganized. What is the BEST solution?",
@@ -247,7 +247,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "Two coworkers disagree about how to finish a project. What is the strongest problem-solving approach?",
@@ -262,7 +262,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A process keeps causing small mistakes. What should you do?",
@@ -277,7 +277,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "You have limited money for a project. What is the BEST decision?",
@@ -292,7 +292,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A team keeps missing deadlines. What should be checked first?",
@@ -311,7 +311,7 @@ const questions = {
   hard: [
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A company rewards speed over accuracy. Customer complaints rise sharply after productivity bonuses are introduced. What hidden pattern is MOST likely responsible?",
@@ -326,7 +326,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A school improves grades by making exams easier, but long-term student performance declines. What systemic pattern is MOST likely occurring?",
@@ -341,7 +341,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A business tracks employee hours carefully but ignores burnout and turnover. Profits rise briefly, then collapse. What hidden system failure is MOST likely responsible?",
@@ -356,7 +356,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "An organization rewards employees for individual performance only. Team collaboration steadily declines. Why?",
@@ -371,7 +371,7 @@ const questions = {
     },
 
     {
-      sectionId: "patternRecognition",
+      sectionId: "patternLogic",
       section: "Pattern Recognition",
       question:
         "A city adds more highway lanes to reduce traffic, but congestion returns within two years. What pattern is MOST likely happening?",
@@ -386,7 +386,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A company keeps solving urgent problems, but the same problems keep returning. What is the BEST higher-level solution?",
@@ -401,7 +401,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A nonprofit wants to help more people but has limited staff. What is the strongest solution?",
@@ -416,7 +416,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A project has three possible solutions: one is fast but risky, one is slow but reliable, and one is cheap but weak. What should guide the decision?",
@@ -431,7 +431,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A team keeps arguing because nobody agrees on what success looks like. What problem needs solving first?",
@@ -446,7 +446,7 @@ const questions = {
     },
 
     {
-      sectionId: "problemSolving",
+      sectionId: "problemCommonSense",
       section: "Problem Solving",
       question:
         "A student is overwhelmed by a large assignment. What is the strongest strategy?",
