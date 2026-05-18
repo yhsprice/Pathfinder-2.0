@@ -254,3 +254,20 @@ body {
 .clickable:hover {
   background: rgba(59,130,246,0.18);
 }
+
+.timer-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.timer-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #eab308, #ef4444);
+  transition: width 1s linear;
+}
