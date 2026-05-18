@@ -142,39 +142,21 @@ function showQuestion() {
           ${currentQuestion.question}
         </h3>
 
-        <
-function startTimer() {
+        <div class="answers">
+          ${currentShuffledOptions.map((option, index) => `
+            <button class="answer-btn" onclick="selectAnswer(${index})">
+              ${option.text}
+            </button>
+          `).join("")}
+        </div>
 
-  const timerFill = document.getElementById("timerFill");
+        <div id="feedbackBox"></div>
 
-  timer = setInterval(() => {
+      </div>
+    </div>
+  `;
 
-    timeLeft--;
-
-    const percent = (timeLeft / 20) * 100;
-
-    timerFill.style.width = percent + "%";
-
-    if (timeLeft <= 0) {
-
-      clearInterval(timer);
-
-      if (!answered) {
-
-        answered = true;
-
-        totalQuestions++;
-
-        moveDifficultyDown();
-
-        setTimeout(() => {
-          showQuestion();
-        }, 500);
-
-      }
-    }
-
-  }, 1000);
+  startTimer();
 }
 
 function shuffleOptions(question) {
