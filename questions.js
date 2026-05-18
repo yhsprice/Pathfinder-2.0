@@ -293,9 +293,9 @@ const questions = {
     {
       sectionId: "patternLogic",
       section: "Pattern & Logic Recognition",
-      question: "You rearrange the letters 'CIFAIPC'. What country do they spell?",
-      options: ["Pacific", "France", "Canada", "Japan"],
-      answer: 0,
+      question: "You rearrange the letters 'AANADC'. What country do they spell?",
+      options: ["Denmark", "France", "Canada", "Japan"],
+      answer: 2,
       trait: "patternRecognition"
     },
 
