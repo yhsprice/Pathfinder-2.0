@@ -14,6 +14,39 @@ let currentQuestionIndex = null;
 let currentShuffledOptions = [];
 let answered = false;
 
+function showSectionIntro(sectionId) {
+
+  const section = pathfinderSections.find(
+    item => item.id === sectionId
+  );
+
+  const container = document.querySelector(".home-screen");
+
+  container.innerHTML = `
+
+    <div class="results-card">
+
+      <h1>${section.title}</h1>
+
+      <p>
+        Pathfinder is about to analyze this cognitive area.
+      </p>
+
+      <p>
+        There are no trick questions.
+        Focus on the strongest overall answer,
+        not just a possible answer.
+      </p>
+
+      <button onclick="showQuestion()">
+        Begin Section
+      </button>
+
+    </div>
+
+  `;
+}
+
 function getRandomQuestion() {
   let pool = questions[currentDifficulty].filter(
     question =>
@@ -247,7 +280,7 @@ if (!hasQuestions) {
   return;
 }
 
-showQuestion();
+showSectionIntro(sectionId);
 }
 
 function showComingSoon(sectionId) {
