@@ -2,80 +2,80 @@ const questions = {
 
   easy: [
 
-    {
-      sectionId: "patternLogic",
-      section: "Pattern Recognition",
-      question:
-        "A student studies better with music but performs worse on timed tests while music plays. What pattern is MOST likely happening?",
-      options: [
-        "Timed tests are unfair",
-        "Music improves confidence but hurts concentration under pressure",
-        "Music has no effect",
-        "The student dislikes school"
-      ],
-      answer: 1,
-      trait: "systemsThinking"
-    },
+   {
+  sectionId: "patternLogic",
+  section: "Pattern & Logic Recognition",
+  question:
+    "What number comes next? 2, 4, 8, 16, ?",
+  options: [
+    "18",
+    "24",
+    "32",
+    "30"
+  ],
+  answer: 2,
+  trait: "logic"
+},
 
-    {
-      sectionId: "patternLogic",
-      section: "Pattern Recognition",
-      question:
-        "A business lowers prices every month, but profits continue dropping. What is the BEST explanation?",
-      options: [
-        "Lower prices always increase profits",
-        "Advertising never matters",
-        "Customers may think quality is poor",
-        "The business should ignore customers"
-      ],
-      answer: 2,
-      trait: "systemsThinking"
-    },
+{
+  sectionId: "patternLogic",
+  section: "Pattern & Logic Recognition",
+  question:
+    "Which shape comes next? ▲ ● ▲ ● ▲ ?",
+  options: [
+    "▲",
+    "■",
+    "●",
+    "◆"
+  ],
+  answer: 2,
+  trait: "patternRecognition"
+},
 
-    {
-      sectionId: "patternLogic",
-      section: "Pattern Recognition",
-      question:
-        "A teacher notices students score higher after short review games before tests. What pattern is MOST likely happening?",
-      options: [
-        "Games reduce stress and improve memory recall",
-        "Students randomly guessed correctly",
-        "Tests became easier",
-        "Reviewing never matters"
-      ],
-      answer: 0,
-      trait: "systemsThinking"
-    },
+{
+  sectionId: "patternLogic",
+  section: "Pattern & Logic Recognition",
+  question:
+    "Which item does NOT belong?",
+  options: [
+    "Hammer",
+    "Screwdriver",
+    "Wrench",
+    "Banana"
+  ],
+  answer: 3,
+  trait: "logic"
+},
 
-    {
-      sectionId: "patternLogic",
-      section: "Pattern Recognition",
-      question:
-        "A store places candy near the checkout line and sales increase. Why?",
-      options: [
-        "People buy impulsively while waiting",
-        "Candy becomes cheaper near registers",
-        "Checkout lines cause hunger",
-        "People only buy candy at night"
-      ],
-      answer: 0,
-      trait: "systemsThinking"
-    },
+{
+  sectionId: "patternLogic",
+  section: "Pattern & Logic Recognition",
+  question:
+    "What letter comes next? A, C, F, J, ?",
+  options: [
+    "N",
+    "O",
+    "P",
+    "L"
+  ],
+  answer: 1,
+  trait: "patternRecognition"
+},
 
-    {
-      sectionId: "patternLogic",
-      section: "Pattern Recognition",
-      question:
-        "A basketball team performs better when one player encourages teammates constantly. What pattern is MOST likely occurring?",
-      options: [
-        "Positive communication improves morale and teamwork",
-        "The player scores all the points",
-        "Encouragement has no impact",
-        "The referees changed behavior"
-      ],
-      answer: 0,
-      trait: "systemsThinking"
-    },
+{
+  sectionId: "patternLogic",
+  section: "Pattern & Logic Recognition",
+  question:
+    "A clock shows 3:15. What angle is closest between the hour and minute hands?",
+  options: [
+    "0°",
+    "90°",
+    "180°",
+    "45°"
+  ],
+  answer: 1,
+  trait: "logic"
+},
 
     {
       sectionId: "problemCommonSense",
