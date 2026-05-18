@@ -98,8 +98,8 @@ function getRandomQuestion() {
 }
 
 function showQuestion() {
-
   answered = false;
+
   clearInterval(timer);
   timeLeft = 20;
 
