@@ -14,6 +14,8 @@ let usedQuestions = [];
 let currentQuestion = null;
 let currentShuffledOptions = [];
 let answered = false;
+let timer;
+let timeLeft = 20;
 
 function startSection(sectionId) {
   activeSection = sectionId;
@@ -96,12 +98,28 @@ function getRandomQuestion() {
 }
 
 function showQuestion() {
+
   answered = false;
+
+  clearInterval(timer);
+
+  timeLeft = 20;
 
   if (totalQuestions >= maxQuestions) {
     showResults();
     return;
   }
+
+  currentQuestion = getRandomQuestion();
+
+  if (!currentQuestion) {
+    showResults();
+    return;
+  }
+
+  currentShuffledOptions = shuffleOptions(currentQuestion);
+
+  startTimer();
 
   currentQuestion = getRandomQuestion();
 
@@ -127,6 +145,10 @@ function showQuestion() {
           <div class="progress-fill" style="width:${progressPercent}%"></div>
         </div>
 
+        <div class="timer-bar">
+        <div class="timer-fill" id="timerFill"></div>
+        </div>
+
         <h2>${currentQuestion.section}</h2>
 
         <h3 class="question-text">
@@ -146,6 +168,40 @@ function showQuestion() {
       </div>
     </div>
   `;
+}
+
+function startTimer() {
+
+  const timerFill = document.getElementById("timerFill");
+
+  timer = setInterval(() => {
+
+    timeLeft--;
+
+    const percent = (timeLeft / 20) * 100;
+
+    timerFill.style.width = percent + "%";
+
+    if (timeLeft <= 0) {
+
+      clearInterval(timer);
+
+      if (!answered) {
+
+        answered = true;
+
+        totalQuestions++;
+
+        moveDifficultyDown();
+
+        setTimeout(() => {
+          showQuestion();
+        }, 500);
+
+      }
+    }
+
+  }, 1000);
 }
 
 function shuffleOptions(question) {
