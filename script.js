@@ -156,7 +156,42 @@ function showQuestion() {
     </div>
   `;
 
-  startTimer();
+function startTimer() {
+
+  const timerFill = document.getElementById("timerFill");
+
+  if (!timerFill) return;
+
+  timerFill.style.width = "100%";
+
+  timer = setInterval(() => {
+
+    timeLeft--;
+
+    const percent = (timeLeft / 20) * 100;
+
+    timerFill.style.width = percent + "%";
+
+    if (timeLeft <= 0) {
+
+      clearInterval(timer);
+
+      if (!answered) {
+
+        answered = true;
+
+        totalQuestions++;
+
+        moveDifficultyDown();
+
+        setTimeout(() => {
+          showQuestion();
+        }, 500);
+
+      }
+    }
+
+  }, 1000);
 }
 
 function shuffleOptions(question) {
