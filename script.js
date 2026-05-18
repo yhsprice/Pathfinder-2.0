@@ -176,11 +176,7 @@ function startTimer() {
     const percent = (timeLeft / maxTime) * 100;
     timerFill.style.width = percent + "%";
     
-    <p>
-Questions Missed: ${wrongAnswers}
-</p>
-
-    if (timeLeft <= 0) {
+      if (timeLeft <= 0) {
       clearInterval(timer);
 
       if (!answered) {
@@ -403,6 +399,3 @@ function restartQuiz() {
   clearInterval(timer);
   location.reload();
 }
-
-let wrongAnswers = 0;
-let maxWrongAnswers = 7;
