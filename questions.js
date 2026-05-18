@@ -297,12 +297,12 @@ const questions = {
 {
   sectionId: "focusDetail",
   section: "Focus, Detail & Error Detection",
-  question: "Which line has a mismatch?",
+  question: "Which color word is spelled incorrectly?",
   options: [
-    "A4582 - Blue",
-    "B3177 - Green",
-    "C8841 - Grean",
-    "D2209 - Yellow"
+    "Blue",
+    "Green",
+    "Orenge",
+    "Yellow"
   ],
   answer: 2,
   trait: "errorDetection"
