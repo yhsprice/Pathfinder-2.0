@@ -437,12 +437,10 @@ const questions = {
   sectionId: "focusDetail",
   section: "Focus, Detail & Error Detection",
   question: "Which sentence is grammatically incorrect?",
-  options: [
-    "Neither of the students was prepared.",
+  options: ["Neither of the students was prepared.",
     "Everyone in the group has finished.",
     "The list of items are on the desk.",
-    "Each employee received a schedule."
-  ],
+    "Each employee received a schedule."],
   answer: 2,
   trait: "attentionToDetail"
 },
@@ -450,12 +448,10 @@ const questions = {
   sectionId: "focusDetail",
   section: "Focus, Detail & Error Detection",
   question: "Find the subtle difference:",
-  options: [
-    "85439217",
+  options: ["85439217",
     "85439271",
     "85439217",
-    "85439217"
-  ],
+    "85439217"],
  answer: 1,
   trait: "errorDetection"
 }
