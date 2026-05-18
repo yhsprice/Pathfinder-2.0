@@ -105,7 +105,25 @@ const questions = {
       ],
       answer: 1,
       trait: "solutionThinking"
-    }
+    },
+    
+{
+  sectionId: "mathNumberSense",
+  section: "Math & Number Sense",
+  question: "What is 15% of 200?",
+  options: ["15", "20", "30", "45"],
+  answer: 2,
+  trait: "mathReasoning"
+},
+{
+  sectionId: "mathNumberSense",
+  section: "Math & Number Sense",
+  question: "If something costs $40 and is 25% off, what is the sale price?",
+  options: ["$10", "$20", "$30", "$35"],
+  answer: 2,
+  trait: "numberSense"
+}
+    
   ],
 
   medium: [
@@ -220,6 +238,23 @@ const questions = {
       answer: 0,
       trait: "solutionThinking"
     }
+    ,
+{
+  sectionId: "mathNumberSense",
+  section: "Math & Number Sense",
+  question: "A worker earns $18 per hour and works 7.5 hours. How much do they earn before taxes?",
+  options: ["$120", "$125", "$135", "$150"],
+  answer: 2,
+  trait: "mathReasoning"
+},
+{
+  sectionId: "mathNumberSense",
+  section: "Math & Number Sense",
+  question: "Which is larger?",
+  options: ["3/8", "0.40", "35%", "0.33"],
+  answer: 1,
+  trait: "numberSense"
+}
   ],
 
   hard: [
@@ -330,4 +365,21 @@ const questions = {
       trait: "solutionThinking"
     }
   ]
+  ,
+{
+  sectionId: "mathNumberSense",
+  section: "Math & Number Sense",
+  question: "A $60 item is marked up by 20%, then discounted by 10%. What is the final price?",
+  options: ["$64.80", "$66.00", "$68.00", "$72.00"],
+  answer: 0,
+  trait: "mathReasoning"
+},
+{
+  sectionId: "mathNumberSense",
+  section: "Math & Number Sense",
+  question: "If 4 people complete a job in 6 hours, how long would 8 people take at the same rate?",
+  options: ["2 hours", "3 hours", "4 hours", "12 hours"],
+  answer: 1,
+  trait: "numberSense"
+}
 };
