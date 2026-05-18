@@ -1,49 +1,68 @@
+let activeSection = null;
 let currentDifficulty = "easy";
 
 let score = 0;
-let traits = {
-  systemsThinking: 0
-};
 let totalQuestions = 0;
 let maxQuestions = 10;
 
-let usedQuestions = [];
+let traits = {
+  systemsThinking: 0,
+  solutionThinking: 0
+};
 
+let usedQuestions = [];
 let currentQuestion = null;
-let currentQuestionIndex = null;
 let currentShuffledOptions = [];
 let answered = false;
 
-function showSectionIntro(sectionId) {
+function startSection(sectionId) {
+  activeSection = sectionId;
+  currentDifficulty = "easy";
 
-  const section = pathfinderSections.find(
-    item => item.id === sectionId
+  score = 0;
+  totalQuestions = 0;
+  usedQuestions = [];
+  answered = false;
+
+  traits = {
+    systemsThinking: 0,
+    solutionThinking: 0
+  };
+
+  const hasQuestions = ["easy", "medium", "hard"].some(level =>
+    questions[level].some(question => question.sectionId === activeSection)
   );
+
+  if (!hasQuestions) {
+    showComingSoon(sectionId);
+    return;
+  }
+
+  showSectionIntro(sectionId);
+}
+
+function showSectionIntro(sectionId) {
+  const section = pathfinderSections.find(item => item.id === sectionId);
+  const title = section ? section.title : "Pathfinder Section";
+  const intro = section ? section.intro : "This section analyzes your skills and thinking patterns.";
 
   const container = document.querySelector(".home-screen");
 
   container.innerHTML = `
-
     <div class="results-card">
+      <h1>${title}</h1>
 
-      <h1>${section.title}</h1>
-
-      <p>
-        Pathfinder is about to analyze this cognitive area.
-      </p>
+      <p>${intro}</p>
 
       <p>
-        There are no trick questions.
-        Focus on the strongest overall answer,
-        not just a possible answer.
+        There are no trick questions. Choose the strongest overall answer,
+        not just an answer that could possibly work.
       </p>
 
       <button onclick="showQuestion()">
         Begin Section
       </button>
-
     </div>
-
   `;
 }
 
@@ -65,7 +84,6 @@ function getRandomQuestion() {
   }
 
   if (pool.length === 0) {
-    showResults();
     return null;
   }
 
@@ -87,9 +105,12 @@ function showQuestion() {
 
   currentQuestion = getRandomQuestion();
 
-if (!currentQuestion) return;
+  if (!currentQuestion) {
+    showResults();
+    return;
+  }
 
-currentShuffledOptions = shuffleOptions(currentQuestion);
+  currentShuffledOptions = shuffleOptions(currentQuestion);
 
   const progressPercent = Math.round((totalQuestions / maxQuestions) * 100);
   const container = document.querySelector(".home-screen");
@@ -161,10 +182,14 @@ function selectAnswer(selectedIndex) {
   });
 
   if (correct) {
+    score++;
 
-  score++;
+    if (!traits[currentQuestion.trait]) {
+      traits[currentQuestion.trait] = 0;
+    }
 
-  traits[currentQuestion.trait]++;
+    traits[currentQuestion.trait]++;
+
     buttons[selectedIndex].classList.add("correct");
 
     feedbackBox.innerHTML = `
@@ -213,22 +238,32 @@ function showResults() {
   const container = document.querySelector(".home-screen");
   const percent = Math.round((score / maxQuestions) * 100);
 
+  const section = pathfinderSections.find(item => item.id === activeSection);
+  const sectionTitle = section ? section.title : "Pathfinder";
+
   let message = "";
 
   if (percent >= 90) {
-    message = "Exceptional systems thinking.";
+    message = "Exceptional performance in this section.";
   } else if (percent >= 70) {
-    message = "Strong analytical reasoning.";
+    message = "Strong performance in this section.";
   } else if (percent >= 50) {
-    message = "Developing pattern analysis skills.";
+    message = "Developing skill area.";
   } else {
-    message = "You may learn better through hands-on examples and real-world practice.";
+    message = "This may be an area where more practice or a different learning style helps.";
   }
+
+  const traitResults = Object.entries(traits)
+    .filter(([trait, value]) => value > 0)
+    .map(([trait, value]) => `
+      <p><strong>${formatTraitName(trait)}:</strong> ${value}</p>
+    `)
+    .join("");
 
   container.innerHTML = `
     <div class="results-card">
 
-      <h1>Pattern Recognition Results</h1>
+      <h1>${sectionTitle} Results</h1>
 
       <div class="score-circle">
         ${percent}%
@@ -237,50 +272,25 @@ function showResults() {
       <h2>${message}</h2>
 
       <p>
-  Systems Thinking Score:
-  ${traits.systemsThinking}
-</p>
+        Pathfinder tracked your answers, difficulty level, and skill patterns in this section.
+      </p>
 
-<p>
-  Pathfinder tracked how you recognized systems,
-  causes, and hidden behavioral patterns.
-</p>
+      <div class="trait-results">
+        ${traitResults || "<p>No trait points earned yet.</p>"}
+      </div>
 
       <button onclick="restartQuiz()">
-        Try Again
+        Back to Home
       </button>
 
     </div>
   `;
 }
 
-function restartQuiz() {
-  location.reload();
-}
-
-let activeSection = null;
-
-function startSection(sectionId) {
-
-  activeSection = sectionId;
-
-  currentDifficulty = "easy";
-
-  score = 0;
-  totalQuestions = 0;
-
-  usedQuestions = [];
-
- const hasQuestions = ["easy", "medium", "hard"].some(level =>
-  questions[level].some(question => question.sectionId === activeSection)
-);
-
-if (!hasQuestions) {
-  showComingSoon(sectionId);
-  return;
-}
-
-showSectionIntro(sectionId);
+function formatTraitName(trait) {
+  return trait
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, char => char.toUpperCase());
 }
 
 function showComingSoon(sectionId) {
@@ -299,9 +309,13 @@ function showComingSoon(sectionId) {
         This section is part of the Pathfinder 2.0 framework, but the question bank has not been added yet.
       </p>
 
-      <button onclick="location.reload()">
+      <button onclick="restartQuiz()">
         Back to Home
       </button>
     </div>
   `;
+}
+
+function restartQuiz() {
+  location.reload();
 }
