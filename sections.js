@@ -1,91 +1,91 @@
 const pathfinderSections = [
 
   {
-    id: "patternRecognition",
-    title: "Pattern Recognition",
+    id: "patternLogic",
+    title: "Pattern & Logic Recognition",
     intro:
-      "This section looks at how well you notice hidden systems, causes, connections, and patterns that others may miss.",
-    traits: ["systemsThinking", "analyticalReasoning"]
+      "This section tests how well you notice patterns, logical relationships, cause-and-effect, and hidden connections.",
+    traits: ["logic", "patternRecognition", "systemsThinking"]
   },
 
   {
-    id: "problemSolving",
-    title: "Problem Solving",
+    id: "mathNumberSense",
+    title: "Math & Number Sense",
     intro:
-      "This section looks at how you respond to problems, choose solutions, handle obstacles, and think through realistic challenges.",
-    traits: ["adaptability", "solutionThinking"]
+      "This section tests practical math, number sense, estimates, percentages, patterns, and everyday calculations.",
+    traits: ["mathReasoning", "numberSense", "accuracy"]
   },
 
   {
-    id: "mechanicalHandsOn",
-    title: "Mechanical / Hands-On Thinking",
+    id: "readingComprehension",
+    title: "Reading Comprehension",
     intro:
-      "This section looks at how you understand tools, physical systems, processes, repairs, movement, and practical real-world fixes.",
-    traits: ["spatialReasoning", "practicalThinking"]
+      "This section tests how well you understand written information, identify key ideas, and interpret meaning.",
+    traits: ["readingComprehension", "interpretation", "focus"]
   },
 
   {
-    id: "peopleCommunication",
-    title: "People & Communication",
+    id: "spellingGrammar",
+    title: "Spelling, Grammar & Sentence Structure",
     intro:
-      "This section looks at how you read people, communicate clearly, handle conflict, and understand social situations.",
-    traits: ["socialReasoning", "communication"]
-  },
-
-  {
-    id: "creativityInnovation",
-    title: "Creativity & Innovation",
-    intro:
-      "This section looks at how you generate ideas, connect unusual concepts, adapt creatively, and solve problems in new ways.",
-    traits: ["creativeThinking", "ideaFlexibility"]
-  },
-
-  {
-    id: "leadershipDecisionMaking",
-    title: "Leadership & Decision Making",
-    intro:
-      "This section looks at how you make decisions, prioritize, take responsibility, and guide others when situations are unclear.",
-    traits: ["leadership", "judgment"]
+      "This section tests spelling, grammar, punctuation, sentence clarity, and written communication skills.",
+    traits: ["grammar", "spelling", "writtenCommunication"]
   },
 
   {
     id: "focusDetail",
-    title: "Focus & Detail",
+    title: "Focus, Detail & Error Detection",
     intro:
-      "This section looks at how well you notice mistakes, track details, stay accurate, and catch inconsistencies.",
-    traits: ["attentionToDetail", "accuracy"]
+      "This section tests how well you notice errors, inconsistencies, missing information, and small details.",
+    traits: ["attentionToDetail", "errorDetection", "accuracy"]
   },
 
   {
-    id: "stressPressure",
-    title: "Stress / Pressure Response",
+    id: "mechanicalHandsOn",
+    title: "Mechanical / Hands-On Reasoning",
     intro:
-      "This section looks at how you think and react when time, pressure, uncertainty, or consequences increase.",
-    traits: ["stressResponse", "emotionalControl"]
+      "This section tests practical reasoning with tools, physical systems, movement, repairs, and hands-on situations.",
+    traits: ["mechanicalReasoning", "spatialReasoning", "practicalThinking"]
   },
 
   {
-    id: "persistenceRetry",
-    title: "Persistence / Retry Behavior",
+    id: "problemCommonSense",
+    title: "Problem Solving & Common Sense",
     intro:
-      "This section looks at how you handle setbacks, recover from mistakes, keep trying, and respond to challenge.",
-    traits: ["persistence", "growthMindset"]
+      "This section tests realistic decision-making, common sense, prioritizing, and choosing smart next steps.",
+    traits: ["problemSolving", "judgment", "commonSense"]
   },
 
   {
-    id: "workEnvironmentFit",
-    title: "Work Environment Fit",
+    id: "peopleJudgment",
+    title: "People, Communication & Judgment",
     intro:
-      "This section looks at the type of work setting where you are most likely to focus, stay motivated, and perform well.",
-    traits: ["environmentFit", "workStyle"]
+      "This section tests social judgment, communication choices, teamwork, conflict handling, and understanding people.",
+    traits: ["socialJudgment", "communication", "teamwork"]
   },
 
   {
-    id: "careerRealityCheck",
-    title: "Career Interest Reality Check",
+    id: "creativityIdeas",
+    title: "Creativity & Idea Generation",
     intro:
-      "This section compares career interests with the real tasks, training, stress, schedule, and lifestyle behind those careers.",
-    traits: ["careerAwareness", "realisticFit"]
+      "This section tests flexible thinking, creative problem solving, idea generation, and unusual connections.",
+    traits: ["creativity", "ideaGeneration", "adaptability"]
+  },
+
+  {
+    id: "workPressurePersistence",
+    title: "Work Style, Pressure & Persistence",
+    intro:
+      "This section looks at how you handle pressure, frustration, repetition, responsibility, and challenging tasks.",
+    traits: ["workStyle", "pressureResponse", "persistence"]
+  },
+
+  {
+    id: "careerRealityFit",
+    title: "Career Reality & Interest Fit",
+    intro:
+      "This section compares interests with the real work, training, schedules, stress, and daily tasks behind careers.",
+    traits: ["careerAwareness", "interestFit", "realisticFit"]
   }
 
 ];
