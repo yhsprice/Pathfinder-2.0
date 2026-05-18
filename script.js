@@ -5,17 +5,16 @@ let score = 0;
 let totalQuestions = 0;
 let maxQuestions = 10;
 
-let traits = {
-  systemsThinking: 0,
-  solutionThinking: 0
-};
+let traits = {};
 
 let usedQuestions = [];
 let currentQuestion = null;
 let currentShuffledOptions = [];
 let answered = false;
-let timer;
+
+let timer = null;
 let timeLeft = 20;
+let maxTime = 20;
 
 function startSection(sectionId) {
   activeSection = sectionId;
@@ -24,12 +23,10 @@ function startSection(sectionId) {
   score = 0;
   totalQuestions = 0;
   usedQuestions = [];
+  traits = {};
   answered = false;
 
-  traits = {
-    systemsThinking: 0,
-    solutionThinking: 0
-  };
+  clearInterval(timer);
 
   const hasQuestions = ["easy", "medium", "hard"].some(level =>
     questions[level].some(question => question.sectionId === activeSection)
@@ -101,7 +98,7 @@ function showQuestion() {
   answered = false;
 
   clearInterval(timer);
-  timeLeft = 20;
+  timeLeft = maxTime;
 
   if (totalQuestions >= maxQuestions) {
     showResults();
@@ -125,7 +122,7 @@ function showQuestion() {
       <div class="question-card">
 
         <div class="progress-text">
-          Question ${totalQuestions + 1} of ${maxQuestions} | Difficulty: ${currentDifficulty.toUpperCase()}
+          Question ${totalQuestions + 1} of ${maxQuestions} | Difficulty: ${formatDifficulty(currentDifficulty)}
         </div>
 
         <div class="progress-bar">
@@ -154,14 +151,12 @@ function showQuestion() {
 
       </div>
     </div>
-    
-    `;
+  `;
 
   startTimer();
 }
 
 function startTimer() {
-
   const timerFill = document.getElementById("timerFill");
 
   if (!timerFill) return;
@@ -169,33 +164,40 @@ function startTimer() {
   timerFill.style.width = "100%";
 
   timer = setInterval(() => {
-
     timeLeft--;
 
-    const percent = (timeLeft / 20) * 100;
-
+    const percent = (timeLeft / maxTime) * 100;
     timerFill.style.width = percent + "%";
 
     if (timeLeft <= 0) {
-
       clearInterval(timer);
 
       if (!answered) {
-
         answered = true;
-
         totalQuestions++;
+
+        showTimeoutFeedback();
 
         moveDifficultyDown();
 
         setTimeout(() => {
           showQuestion();
-        }, 500);
-
+        }, 900);
       }
     }
-
   }, 1000);
+}
+
+function showTimeoutFeedback() {
+  const feedbackBox = document.getElementById("feedbackBox");
+
+  if (feedbackBox) {
+    feedbackBox.innerHTML = `
+      <div class="feedback-box">
+        Time ran out. Pathfinder lowered the challenge level.
+      </div>
+    `;
+  }
 }
 
 function shuffleOptions(question) {
@@ -206,6 +208,7 @@ function shuffleOptions(question) {
 
   for (let i = optionsWithIndex.length - 1; i > 0; i--) {
     const randomIndex = Math.floor(Math.random() * (i + 1));
+
     [optionsWithIndex[i], optionsWithIndex[randomIndex]] =
       [optionsWithIndex[randomIndex], optionsWithIndex[i]];
   }
@@ -215,7 +218,9 @@ function shuffleOptions(question) {
 
 function selectAnswer(selectedIndex) {
   if (answered) return;
+
   answered = true;
+  clearInterval(timer);
 
   const buttons = document.querySelectorAll(".answer-btn");
   const feedbackBox = document.getElementById("feedbackBox");
@@ -285,6 +290,8 @@ function moveDifficultyDown() {
 }
 
 function showResults() {
+  clearInterval(timer);
+
   const container = document.querySelector(".home-screen");
   const percent = Math.round((score / maxQuestions) * 100);
 
@@ -322,7 +329,7 @@ function showResults() {
       <h2>${message}</h2>
 
       <p>
-        Pathfinder tracked your answers, difficulty level, and skill patterns in this section.
+        Pathfinder tracked your answers, difficulty level, timing, and skill patterns in this section.
       </p>
 
       <div class="trait-results">
@@ -343,7 +350,17 @@ function formatTraitName(trait) {
     .replace(/^./, char => char.toUpperCase());
 }
 
+function formatDifficulty(difficulty) {
+  if (difficulty === "easy") return "Beginner";
+  if (difficulty === "medium") return "Skilled";
+  if (difficulty === "hard") return "Advanced";
+
+  return difficulty;
+}
+
 function showComingSoon(sectionId) {
+  clearInterval(timer);
+
   const section = pathfinderSections.find(item => item.id === sectionId);
   const title = section ? section.title : "This Section";
 
@@ -367,5 +384,6 @@ function showComingSoon(sectionId) {
 }
 
 function restartQuiz() {
+  clearInterval(timer);
   location.reload();
 }
