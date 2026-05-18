@@ -4,6 +4,8 @@ let currentDifficulty = "easy";
 let score = 0;
 let totalQuestions = 0;
 let maxQuestions = 10;
+let wrongAnswers = 0;
+let maxWrongAnswers = 7;
 
 let traits = {};
 
@@ -22,10 +24,11 @@ function startSection(sectionId) {
 
   score = 0;
   totalQuestions = 0;
+  wrongAnswers = 0;
   usedQuestions = [];
   traits = {};
   answered = false;
-  wrongAnswers = 0;
+  
 
   clearInterval(timer);
 
@@ -101,14 +104,14 @@ function showQuestion() {
   clearInterval(timer);
   timeLeft = maxTime;
 
-  if (
+ if (
   totalQuestions >= maxQuestions ||
   wrongAnswers >= maxWrongAnswers
 ) {
   showResults();
   return;
 }
-
+  
   currentQuestion = getRandomQuestion();
 
   if (!currentQuestion) {
@@ -334,6 +337,10 @@ function showResults() {
       <div class="score-circle">
         ${percent}%
       </div>
+
+      <p>
+  Questions Missed: ${wrongAnswers}
+</p>
 
       <h2>${message}</h2>
 
