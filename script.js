@@ -154,7 +154,11 @@ function showQuestion() {
 
       </div>
     </div>
-  `;
+    
+    `;
+
+  startTimer();
+}
 
 function startTimer() {
 
