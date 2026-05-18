@@ -149,7 +149,28 @@ const questions = {
   answer: 0,
   trait: "errorDetection"
 }
-    
+    ,
+{
+  sectionId: "spellingGrammar",
+  section: "Spelling, Grammar & Sentence Structure",
+  question: "Which word is spelled correctly?",
+  options: ["Recieve", "Receive", "Receeve", "Receve"],
+  answer: 1,
+  trait: "spelling"
+},
+{
+  sectionId: "spellingGrammar",
+  section: "Spelling, Grammar & Sentence Structure",
+  question: "Which sentence is written correctly?",
+  options: [
+    "She don't like math.",
+    "She doesn't like math.",
+    "She doesn't likes math.",
+    "She don't likes math."
+  ],
+  answer: 1,
+  trait: "grammar"
+}
   ],
 
   medium: [
@@ -306,6 +327,32 @@ const questions = {
   ],
   answer: 2,
   trait: "errorDetection"
+},
+{
+  sectionId: "spellingGrammar",
+  section: "Spelling, Grammar & Sentence Structure",
+  question: "Which sentence uses the correct form of their/there/they're?",
+  options: [
+    "Their going to the meeting.",
+    "There going to the meeting.",
+    "They're going to the meeting.",
+    "Theyre going to the meeting."
+  ],
+  answer: 2,
+  trait: "grammar"
+},
+{
+  sectionId: "spellingGrammar",
+  section: "Spelling, Grammar & Sentence Structure",
+  question: "Which sentence has the clearest structure?",
+  options: [
+    "Running late, the keys were forgotten.",
+    "Because I was running late, I forgot my keys.",
+    "The keys running late were forgotten.",
+    "Forgot my keys because running late."
+  ],
+  answer: 1,
+  trait: "writtenCommunication"
 }
   ],
 
@@ -454,6 +501,32 @@ const questions = {
     "85439217"],
  answer: 1,
   trait: "errorDetection"
+},
+{
+  sectionId: "spellingGrammar",
+  section: "Spelling, Grammar & Sentence Structure",
+  question: "Which sentence is grammatically correct?",
+  options: [
+    "Neither the coach nor the players was ready.",
+    "Neither the coach nor the players were ready.",
+    "Neither the coach or the players were ready.",
+    "Neither the coach or the players was ready."
+  ],
+  answer: 1,
+  trait: "grammar"
+},
+{
+  sectionId: "spellingGrammar",
+  section: "Spelling, Grammar & Sentence Structure",
+  question: "Which sentence is most concise and professional?",
+  options: [
+    "Due to the fact that we were late, we missed it.",
+    "Because we were late, we missed it.",
+    "We missed it due to being late because of time.",
+    "The reason we missed it was due to lateness."
+  ],
+  answer: 1,
+  trait: "writtenCommunication"
 }
 
   ]
