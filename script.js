@@ -25,6 +25,7 @@ function startSection(sectionId) {
   usedQuestions = [];
   traits = {};
   answered = false;
+  wrongAnswers = 0;
 
   clearInterval(timer);
 
@@ -100,10 +101,13 @@ function showQuestion() {
   clearInterval(timer);
   timeLeft = maxTime;
 
-  if (totalQuestions >= maxQuestions) {
-    showResults();
-    return;
-  }
+  if (
+  totalQuestions >= maxQuestions ||
+  wrongAnswers >= maxWrongAnswers
+) {
+  showResults();
+  return;
+}
 
   currentQuestion = getRandomQuestion();
 
@@ -168,6 +172,10 @@ function startTimer() {
 
     const percent = (timeLeft / maxTime) * 100;
     timerFill.style.width = percent + "%";
+    
+    <p>
+Questions Missed: ${wrongAnswers}
+</p>
 
     if (timeLeft <= 0) {
       clearInterval(timer);
@@ -255,6 +263,7 @@ function selectAnswer(selectedIndex) {
 
     moveDifficultyUp();
   } else {
+    wrongAnswers++;
     buttons[selectedIndex].classList.add("incorrect");
 
     feedbackBox.innerHTML = `
@@ -387,3 +396,6 @@ function restartQuiz() {
   clearInterval(timer);
   location.reload();
 }
+
+let wrongAnswers = 0;
+let maxWrongAnswers = 7;
