@@ -100,26 +100,13 @@ function getRandomQuestion() {
 function showQuestion() {
 
   answered = false;
-
   clearInterval(timer);
-
   timeLeft = 20;
 
   if (totalQuestions >= maxQuestions) {
     showResults();
     return;
   }
-
-  currentQuestion = getRandomQuestion();
-
-  if (!currentQuestion) {
-    showResults();
-    return;
-  }
-
-  currentShuffledOptions = shuffleOptions(currentQuestion);
-
-  startTimer();
 
   currentQuestion = getRandomQuestion();
 
@@ -146,7 +133,7 @@ function showQuestion() {
         </div>
 
         <div class="timer-bar">
-        <div class="timer-fill" id="timerFill"></div>
+          <div class="timer-fill" id="timerFill"></div>
         </div>
 
         <h2>${currentQuestion.section}</h2>
@@ -155,21 +142,7 @@ function showQuestion() {
           ${currentQuestion.question}
         </h3>
 
-        <div class="answers">
-          ${currentShuffledOptions.map((option, index) => `
-            <button class="answer-btn" onclick="selectAnswer(${index})">
-              ${option.text}
-            </button>
-          `).join("")}
-        </div>
-
-        <div id="feedbackBox"></div>
-
-      </div>
-    </div>
-  `;
-}
-
+        <
 function startTimer() {
 
   const timerFill = document.getElementById("timerFill");
