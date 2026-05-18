@@ -364,7 +364,6 @@ const questions = {
       answer: 0,
       trait: "solutionThinking"
     }
-  ]
   ,
 {
   sectionId: "mathNumberSense",
@@ -382,4 +381,6 @@ const questions = {
   answer: 1,
   trait: "numberSense"
 }
+
+  ]
 };
