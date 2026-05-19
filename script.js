@@ -378,12 +378,59 @@ function showResults() {
     message = "This may be an area where more practice or a different learning style helps.";
   }
 
-  const traitResults = Object.entries(traits)
-    .filter(([trait, value]) => value > 0)
-    .map(([trait, value]) => `
-      <p><strong>${formatTraitName(trait)}:</strong> ${value}</p>
-    `)
-    .join("");
+const skillTraits = [
+  "logic",
+  "patternRecognition",
+  "mathReasoning",
+  "numberSense",
+  "readingComprehension",
+  "grammar",
+  "spelling",
+  "writtenCommunication",
+  "attentionToDetail",
+  "errorDetection",
+  "mechanicalReasoning",
+  "spatialReasoning",
+  "practicalThinking",
+  "solutionThinking",
+  "socialJudgment",
+  "communication",
+  "teamwork",
+  "creativity",
+  "ideaGeneration",
+  "adaptability",
+  "workStyle",
+  "pressureResponse",
+  "persistence",
+  "careerAwareness",
+  "interestFit",
+  "realisticFit"
+];
+
+const interestTraits = [
+  "handsOn",
+  "helpingPeople",
+  "creative",
+  "data",
+  "active",
+  "independent",
+  "teamBased",
+  "technology"
+];
+
+const skillResults = Object.entries(traits)
+  .filter(([trait, value]) => value > 0 && skillTraits.includes(trait))
+  .map(([trait, value]) => `
+    <p><strong>${formatTraitName(trait)}:</strong> ${value}</p>
+  `)
+  .join("");
+
+const interestResults = Object.entries(traits)
+  .filter(([trait, value]) => value > 0 && interestTraits.includes(trait))
+  .map(([trait, value]) => `
+    <p><strong>${formatTraitName(trait)}:</strong> ${value}</p>
+  `)
+  .join("");
 
   container.innerHTML = `
     <div class="results-card">
@@ -405,8 +452,12 @@ function showResults() {
       </p>
 
       <div class="trait-results">
-        ${traitResults || "<p>No trait points earned yet.</p>"}
-      </div>
+  <h3>Skill Signals</h3>
+  ${skillResults || "<p>No skill signals recorded yet.</p>"}
+
+  <h3>Interest Signals</h3>
+  ${interestResults || "<p>No interest signals recorded yet.</p>"}
+</div>
 
      ${getNextSectionButton()}
     </div>
