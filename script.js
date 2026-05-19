@@ -262,44 +262,47 @@ function selectAnswer(selectedIndex) {
 
   const answerTime = (Date.now() - questionStartTime) / 1000;
 
-if (answerTime < 2) {
-  rapidAnswers++;
-  engagementScore -= 5;
-}
+  if (answerTime < 2) {
+    rapidAnswers++;
+    engagementScore -= 5;
+  }
 
   const buttons = document.querySelectorAll(".answer-btn");
   const feedbackBox = document.getElementById("feedbackBox");
   const selectedOption = currentShuffledOptions[selectedIndex];
 
-  if (currentQuestion.type === "interest") {
-  const selectedInterest = currentQuestion.interestMap[selectedOption.originalIndex];
+  buttons.forEach(button => {
+    button.classList.add("disabled");
+  });
 
-  if (!traits[selectedInterest]) {
-    traits[selectedInterest] = 0;
+  if (currentQuestion.type === "interest") {
+    const selectedInterest =
+      currentQuestion.interestMap[selectedOption.originalIndex];
+
+    if (!traits[selectedInterest]) {
+      traits[selectedInterest] = 0;
+    }
+
+    traits[selectedInterest]++;
+
+    totalQuestions++;
+
+    feedbackBox.innerHTML = `
+      <div class="feedback-box">
+        Interest noted. Pathfinder is building your career direction profile.
+      </div>
+    `;
+
+    setTimeout(() => {
+      showQuestion();
+    }, 900);
+
+    return;
   }
 
-  traits[selectedInterest]++;
-
-  totalQuestions++;
-
-  feedbackBox.innerHTML = `
-    <div class="feedback-box">
-      Interest noted. Pathfinder is building your career direction profile.
-    </div>
-  `;
-
-  setTimeout(() => {
-    showQuestion();
-  }, 900);
-
-  return;
-}
-
   const correct = selectedOption.originalIndex === currentQuestion.answer;
-  
-  buttons.forEach((button, index) => {
-    button.classList.add("disabled");
 
+  buttons.forEach((button, index) => {
     if (currentShuffledOptions[index].originalIndex === currentQuestion.answer) {
       button.classList.add("correct");
     }
@@ -325,6 +328,7 @@ if (answerTime < 2) {
     moveDifficultyUp();
   } else {
     wrongAnswers++;
+
     buttons[selectedIndex].classList.add("incorrect");
 
     feedbackBox.innerHTML = `
