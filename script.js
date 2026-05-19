@@ -295,6 +295,8 @@ if (answerTime < 2) {
   return;
 }
 
+  const correct = selectedOption.originalIndex === currentQuestion.answer;
+  
   buttons.forEach((button, index) => {
     button.classList.add("disabled");
 
@@ -455,12 +457,13 @@ const interestResults = Object.entries(traits)
   <h3>Skill Signals</h3>
   ${skillResults || "<p>No skill signals recorded yet.</p>"}
 
-  <h3>Interest Signals</h3>
+   <h3>Interest Signals</h3>
   ${interestResults || "<p>No interest signals recorded yet.</p>"}
 </div>
 
-     ${getNextSectionButton()}
-    </div>
+${getNextSectionButton()}
+
+   </div>
   `;
 }
 
