@@ -454,8 +454,17 @@ const interestResults = Object.entries(traits)
       <h2>${message}</h2>
 
       <p>
-        Pathfinder tracked your answers, difficulty level, timing, and skill patterns in this section.
-      </p>
+  Pathfinder tracked your answers, difficulty level, timing, and skill patterns in this section.
+</p>
+
+<div class="insight-box">
+  <h3>What this suggests</h3>
+  <p>
+    This section gives an early signal of where your abilities, problem-solving style,
+    and interests may be strongest. It is not meant to label you — it helps point you
+    toward career areas worth exploring.
+  </p>
+</div>
 
       <div class="trait-results">
   <h3>Skill Signals</h3>
