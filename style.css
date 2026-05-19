@@ -347,3 +347,23 @@ body {
   margin-top: 18px;
   margin-bottom: 8px;
 }
+
+@media (max-width: 768px) {
+  .question-card,
+  .results-card {
+    padding: 26px;
+  }
+
+  .question-text {
+    font-size: 1.35rem;
+  }
+
+  .answer-btn {
+    font-size: 1rem;
+    padding: 17px;
+  }
+
+  .reading-passage {
+    font-size: 1rem;
+  }
+}
