@@ -1,47 +1,5 @@
 const questions = {
-  easy: [
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "What number comes next? 2, 4, 8, 16, ?",
-      options: ["18", "24", "32", "30"],
-      answer: 2,
-      trait: "logic"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "Which shape comes next? ▲ ● ▲ ● ▲ ?",
-      options: ["▲", "■", "●", "◆"],
-      answer: 2,
-      trait: "patternRecognition"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "Which item does NOT belong?",
-      options: ["Hammer", "Screwdriver", "Wrench", "Banana"],
-      answer: 3,
-      trait: "logic"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "What letter comes next? A, C, F, J, ?",
-      options: ["N", "O", "P", "L"],
-      answer: 1,
-      trait: "patternRecognition"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "A clock shows 3:15. What angle is closest between the hour and minute hands?",
-      options: ["0°", "90°", "180°", "45°"],
-      answer: 1,
-      trait: "logic"
-    },
-
-    {
+     {
       sectionId: "problemCommonSense",
       section: "Problem Solving & Common Sense",
       question: "You are helping plan an event, but the speaker cancels the morning of the event. What should you do FIRST?",
@@ -174,53 +132,7 @@ const questions = {
   ],
 
   medium: [
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "What number comes next? 3, 6, 12, 24, ?",
-      options: ["30", "36", "48", "54"],
-      answer: 2,
-      trait: "logic"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "Which word does NOT fit?",
-      options: ["Dog", "Cat", "Bird", "Carrot"],
-      answer: 3,
-      trait: "logic"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "If all BLOOPS are RAZZES, and some RAZZES are LUMS, which statement must be true?",
-      options: [
-        "All BLOOPS are LUMS",
-        "Some BLOOPS may be LUMS",
-        "No BLOOPS are LUMS",
-        "All LUMS are BLOOPS"
-      ],
-      answer: 1,
-      trait: "logic"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "What comes next? ■ ▲ ▲ ■ ▲ ▲ ■ ?",
-      options: ["■", "▲", "●", "◆"],
-      answer: 1,
-      trait: "patternRecognition"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "A train travels 60 miles in 1 hour. At the same speed, how far will it travel in 3.5 hours?",
-      options: ["180 miles", "200 miles", "210 miles", "240 miles"],
-      answer: 2,
-      trait: "logic"
-    },
-
-    {
+      {
       sectionId: "problemCommonSense",
       section: "Problem Solving & Common Sense",
       question: "A school club keeps losing members because meetings feel unorganized. What is the BEST solution?",
@@ -357,47 +269,6 @@ const questions = {
   ],
 
   hard: [
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "What number comes next? 1, 1, 2, 3, 5, 8, ?",
-      options: ["11", "12", "13", "14"],
-      answer: 2,
-      trait: "logic"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "If five machines make five parts in five minutes, how long would 100 machines take to make 100 parts?",
-      options: ["5 minutes", "20 minutes", "100 minutes", "500 minutes"],
-      answer: 0,
-      trait: "logic"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "Which pattern comes next? AB, BC, CD, DE, ?",
-      options: ["EF", "FG", "EG", "DF"],
-      answer: 0,
-      trait: "patternRecognition"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "A farmer has 17 sheep. All but 9 run away. How many are left?",
-      options: ["8", "9", "17", "0"],
-      answer: 1,
-      trait: "logic"
-    },
-    {
-      sectionId: "patternLogic",
-      section: "Pattern & Logic Recognition",
-      question: "You rearrange the letters 'AANADC'. What country do they spell?",
-      options: ["Denmark", "France", "Canada", "Japan"],
-      answer: 2,
-      trait: "patternRecognition"
-    },
-
     {
       sectionId: "problemCommonSense",
       section: "Problem Solving & Common Sense",
