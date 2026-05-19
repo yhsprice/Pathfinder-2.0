@@ -139,7 +139,7 @@ const questions = {
 {
   sectionId: "focusDetail",
   section: "Focus, Detail & Error Detection",
-  question: "Which number appears twice?",
+  question: "Which number has a number that appears twice?",
   options: [
     "4, 7, 9, 2, 6, 7, 1",
     "5, 3, 8, 1, 4, 9, 2",
