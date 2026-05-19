@@ -1,4 +1,5 @@
 const questions = {
+  easy: [
      {
       sectionId: "problemCommonSense",
       section: "Problem Solving & Common Sense",
