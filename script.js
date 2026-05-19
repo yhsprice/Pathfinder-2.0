@@ -31,6 +31,10 @@ function startSection(sectionId) {
   score = 0;
   totalQuestions = 0;
   wrongAnswers = 0;
+  rapidAnswers = 0;
+  timeoutAnswers = 0;
+  engagementScore = 100;
+  maxQuestions = baseQuestions;
   usedQuestions = [];
   traits = {};
   answered = false;
