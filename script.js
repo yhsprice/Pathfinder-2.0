@@ -271,7 +271,29 @@ if (answerTime < 2) {
   const feedbackBox = document.getElementById("feedbackBox");
   const selectedOption = currentShuffledOptions[selectedIndex];
 
-  const correct = selectedOption.originalIndex === currentQuestion.answer;
+  if (currentQuestion.type === "interest") {
+  const selectedInterest = currentQuestion.interestMap[selectedOption.originalIndex];
+
+  if (!traits[selectedInterest]) {
+    traits[selectedInterest] = 0;
+  }
+
+  traits[selectedInterest]++;
+
+  totalQuestions++;
+
+  feedbackBox.innerHTML = `
+    <div class="feedback-box">
+      Interest noted. Pathfinder is building your career direction profile.
+    </div>
+  `;
+
+  setTimeout(() => {
+    showQuestion();
+  }, 900);
+
+  return;
+}
 
   buttons.forEach((button, index) => {
     button.classList.add("disabled");
