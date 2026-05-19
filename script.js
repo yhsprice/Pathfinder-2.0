@@ -142,9 +142,15 @@ function showQuestion() {
 
         <h2>${currentQuestion.section}</h2>
 
-        <h3 class="question-text">
-          ${currentQuestion.question}
-        </h3>
+         ${currentQuestion.passage ? `
+        <div class="reading-passage">
+        ${currentQuestion.passage}
+        </div>
+        ` : ""}
+
+<h3 class="question-text">
+  ${currentQuestion.question}
+</h3>
 
         <div class="answers">
           ${currentShuffledOptions.map((option, index) => `
