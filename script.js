@@ -3,7 +3,8 @@ let currentDifficulty = "easy";
 
 let score = 0;
 let totalQuestions = 0;
-let maxQuestions = 10;
+let baseQuestions = 10;
+let maxQuestions = baseQuestions;
 let wrongAnswers = 0;
 let maxWrongAnswers = 7;
 let rapidAnswers = 0;
@@ -109,7 +110,19 @@ function showQuestion() {
   clearInterval(timer);
   timeLeft = maxTime;
 
- if (
+  if (engagementScore <= 70) {
+  maxQuestions = 8;
+}
+
+if (engagementScore <= 55) {
+  maxQuestions = 6;
+}
+
+if (engagementScore <= 40) {
+  maxQuestions = 5;
+}
+   
+  if (
   totalQuestions >= maxQuestions ||
   wrongAnswers >= maxWrongAnswers ||
   engagementScore <= 40
