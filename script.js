@@ -6,6 +6,11 @@ let totalQuestions = 0;
 let maxQuestions = 10;
 let wrongAnswers = 0;
 let maxWrongAnswers = 7;
+let rapidAnswers = 0;
+let timeoutAnswers = 0;
+let engagementScore = 100;
+
+let questionStartTime = 0;
 
 let traits = {};
 
@@ -106,8 +111,11 @@ function showQuestion() {
 
  if (
   totalQuestions >= maxQuestions ||
-  wrongAnswers >= maxWrongAnswers
-) {
+  wrongAnswers >= maxWrongAnswers ||
+  engagementScore <= 40
+)
+ 
+ {
   showResults();
   return;
 }
@@ -123,6 +131,8 @@ function showQuestion() {
 
   const progressPercent = Math.round((totalQuestions / maxQuestions) * 100);
   const container = document.querySelector(".home-screen");
+
+  questionStartTime = Date.now();
 
   container.innerHTML = `
     <div class="quiz-container">
@@ -184,6 +194,8 @@ function startTimer() {
     
       if (timeLeft <= 0) {
       clearInterval(timer);
+        timeoutAnswers++;
+        engagementScore -= 8;
 
       if (!answered) {
         answered = true;
@@ -234,6 +246,13 @@ function selectAnswer(selectedIndex) {
 
   answered = true;
   clearInterval(timer);
+
+  const answerTime = (Date.now() - questionStartTime) / 1000;
+
+if (answerTime < 2) {
+  rapidAnswers++;
+  engagementScore -= 5;
+}
 
   const buttons = document.querySelectorAll(".answer-btn");
   const feedbackBox = document.getElementById("feedbackBox");
