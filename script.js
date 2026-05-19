@@ -354,10 +354,7 @@ function showResults() {
         ${traitResults || "<p>No trait points earned yet.</p>"}
       </div>
 
-      <button onclick="restartQuiz()">
-        Back to Home
-      </button>
-
+     ${getNextSectionButton()}
     </div>
   `;
 }
@@ -398,6 +395,32 @@ function showComingSoon(sectionId) {
         Back to Home
       </button>
     </div>
+  `;
+}
+
+function getNextSectionButton() {
+  const currentIndex = pathfinderSections.findIndex(
+    section => section.id === activeSection
+  );
+
+  const nextSection = pathfinderSections[currentIndex + 1];
+
+  if (nextSection) {
+    return `
+      <button onclick="startSection('${nextSection.id}')">
+        Continue to Next Section
+      </button>
+
+      <button onclick="restartQuiz()" class="secondary-btn">
+        Back to Home
+      </button>
+    `;
+  }
+
+  return `
+    <button onclick="restartQuiz()">
+      Finish Pathfinder
+    </button>
   `;
 }
 
