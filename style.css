@@ -265,6 +265,15 @@ body {
   margin-bottom: 20px;
 }
 
+.reading-passage {
+  background: rgba(255,255,255,0.08);
+  border-left: 4px solid #38bdf8;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  line-height: 1.7;
+  font-size: 1rem;
+}
 .timer-fill {
   width: 100%;
   height: 100%;
