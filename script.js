@@ -610,6 +610,83 @@ function getNextSectionButton() {
   `;
 }
 
+function startCareerClash() {
+  let currentClash = 0;
+  let clashResults = {};
+
+  function showClash() {
+    const item = careerClashQuestions[currentClash];
+    const container = document.querySelector(".home-screen");
+
+    if (!item) {
+      const topResults = Object.entries(clashResults)
+        .sort((a, b) => b[1] - a[1])
+        .map(([career, count]) => `<p><strong>${career}</strong></p>`)
+        .join("");
+
+      container.innerHTML = `
+        <div class="results-card">
+          <h1>Career Clash Results</h1>
+          <p>You leaned toward these career possibilities:</p>
+          ${topResults || "<p>No choices recorded.</p>"}
+          <button onclick="restartQuiz()">Back to Home</button>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="quiz-container">
+        <div class="question-card">
+          <h2>Career Clash</h2>
+          <h3 class="question-text">${item.question}</h3>
+
+          <div class="clash-grid">
+            <button class="clash-card" onclick="chooseClash('left')">
+              <h3>${item.left.title}</h3>
+              <h4>Good parts</h4>
+              <ul>${item.left.positives.map(x => `<li>${x}</li>`).join("")}</ul>
+              <h4>Tradeoffs</h4>
+              <ul>${item.left.negatives.map(x => `<li>${x}</li>`).join("")}</ul>
+            </button>
+
+            <button class="clash-card" onclick="chooseClash('right')">
+              <h3>${item.right.title}</h3>
+              <h4>Good parts</h4>
+              <ul>${item.right.positives.map(x => `<li>${x}</li>`).join("")}</ul>
+              <h4>Tradeoffs</h4>
+              <ul>${item.right.negatives.map(x => `<li>${x}</li>`).join("")}</ul>
+            </button>
+          </div>
+
+          <div id="feedbackBox"></div>
+        </div>
+      </div>
+    `;
+  }
+
+  window.chooseClash = function(side) {
+    const item = careerClashQuestions[currentClash];
+    const choice = item[side];
+
+    choice.careers.forEach(career => {
+      clashResults[career] = (clashResults[career] || 0) + 1;
+    });
+
+    document.getElementById("feedbackBox").innerHTML = `
+      <div class="feedback-box">
+        You leaned toward <strong>${choice.title}</strong>.
+      </div>
+    `;
+
+    currentClash++;
+
+    setTimeout(showClash, 1000);
+  };
+
+  showClash();
+}
+
 function restartQuiz() {
   clearInterval(timer);
   location.reload();
