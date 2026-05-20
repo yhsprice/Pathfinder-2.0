@@ -621,67 +621,140 @@ function startCareerClash() {
     if (!item) {
       const topResults = Object.entries(clashResults)
         .sort((a, b) => b[1] - a[1])
-        .map(([career, count]) => `<p><strong>${career}</strong></p>`)
+        .map(([career]) => `<p><strong>${career}</strong></p>`)
         .join("");
 
       container.innerHTML = `
-        <div class="results-card">
-          <h1>Career Clash Results</h1>
-          <p>You leaned toward these career possibilities:</p>
-          ${topResults || "<p>No choices recorded.</p>"}
-          <button onclick="restartQuiz()">Back to Home</button>
+        <div class="clash-page">
+          <div class="clash-results-card">
+            <h1>Career Clash Results</h1>
+            <p>You leaned toward these career possibilities:</p>
+            ${topResults || "<p>No choices recorded.</p>"}
+            <button onclick="restartQuiz()">Back to Home</button>
+          </div>
         </div>
       `;
       return;
     }
 
     container.innerHTML = `
-      <div class="quiz-container">
-        <div class="question-card">
-          <h2>Career Clash</h2>
-          <h3 class="question-text">${item.question}</h3>
+      <div class="clash-page">
 
-          <div class="clash-grid">
-            <button class="clash-card" onclick="chooseClash('left')">
-              <h3>${item.left.title}</h3>
-              <h4>Good parts</h4>
-              <ul>${item.left.positives.map(x => `<li>${x}</li>`).join("")}</ul>
-              <h4>Tradeoffs</h4>
-              <ul>${item.left.negatives.map(x => `<li>${x}</li>`).join("")}</ul>
-            </button>
-
-            <button class="clash-card" onclick="chooseClash('right')">
-              <h3>${item.right.title}</h3>
-              <h4>Good parts</h4>
-              <ul>${item.right.positives.map(x => `<li>${x}</li>`).join("")}</ul>
-              <h4>Tradeoffs</h4>
-              <ul>${item.right.negatives.map(x => `<li>${x}</li>`).join("")}</ul>
-            </button>
+        <div class="clash-topbar">
+          <div class="clash-pill">
+            <span class="clash-icon">🎯</span>
+            <div>
+              <strong>Your Journey</strong>
+              <p>Question ${currentClash + 1} of ${careerClashQuestions.length}</p>
+            </div>
           </div>
 
-          <div id="feedbackBox"></div>
+          <div class="clash-pill">
+            <span class="clash-icon">⏱️</span>
+            <div>
+              <strong>Take Your Time</strong>
+              <p>There are no wrong answers.</p>
+            </div>
+          </div>
         </div>
+
+        <h1 class="clash-title">✨ CAREER CLASH ✨</h1>
+        <p class="clash-subtitle">Choose the work life that sounds more interesting to you.</p>
+
+        <div class="clash-card-grid">
+
+          ${buildClashCard(item.left, "left", "purple")}
+
+          ${buildClashCard(item.right, "right", "blue")}
+
+        </div>
+
+        <div id="feedbackBox"></div>
+
+        <div class="clash-info-row">
+          <div>
+            <strong>💡 No Wrong Answers</strong>
+            <p>We just want to learn what kind of work life appeals to you more.</p>
+          </div>
+
+          <div>
+            <strong>🕒 Take Your Time</strong>
+            <p>Think about what you would enjoy most day to day.</p>
+          </div>
+
+          <div>
+            <strong>🧭 Discover New Possibilities</strong>
+            <p>Your choices help us find careers you may not know exist yet.</p>
+          </div>
+        </div>
+
+        <button class="clash-skip-btn" onclick="restartQuiz()">
+          I’ll Decide Later
+        </button>
+
       </div>
+    `;
+  }
+
+  function buildClashCard(choice, side, colorClass) {
+    return `
+      <button class="career-clash-card ${colorClass}" onclick="chooseClash('${side}')">
+        <div class="career-clash-icon">
+          ${colorClass === "purple" ? "🛠️" : "📊"}
+        </div>
+
+        <h2>${choice.title}</h2>
+
+        <p class="career-clash-description">
+          ${choice.description || "Choose this if this kind of work sounds interesting to you."}
+        </p>
+
+        <hr>
+
+        <h3 class="good-heading">👍 The Good Parts</h3>
+        <ul>
+          ${choice.positives.map(item => `<li>✅ ${item}</li>`).join("")}
+        </ul>
+
+        <h3 class="trade-heading">⚠️ The Tradeoffs</h3>
+        <ul>
+          ${choice.negatives.map(item => `<li>🟠 ${item}</li>`).join("")}
+        </ul>
+
+        <div class="choose-button">
+          ♡ This Sounds Better
+          <span>Choose this work life</span>
+        </div>
+      </button>
     `;
   }
 
   window.chooseClash = function(side) {
     const item = careerClashQuestions[currentClash];
     const choice = item[side];
+    const otherSide = side === "left" ? "right" : "left";
+    const otherChoice = item[otherSide];
 
     choice.careers.forEach(career => {
       clashResults[career] = (clashResults[career] || 0) + 1;
     });
 
     document.getElementById("feedbackBox").innerHTML = `
-      <div class="feedback-box">
-        You leaned toward <strong>${choice.title}</strong>.
+      <div class="clash-feedback">
+        You leaned toward <strong>${choice.title}</strong>
+        over <strong>${otherChoice.title}</strong>.
+        <br>
+        Careers connected to this choice may include:
+        <strong>${choice.careers.slice(0, 3).join(", ")}</strong>.
+        <br><br>
+        <button onclick="nextClashQuestion()">Next Career Clash</button>
       </div>
     `;
+  };
 
+  window.nextClashQuestion = function() {
     currentClash++;
-
-    setTimeout(showClash, 1000);
+    showClash();
   };
 
   showClash();
