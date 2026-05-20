@@ -81,7 +81,7 @@ const careerClashQuestions = [
         "Complex planning",
         "Long projects"
       ],
-      careers: [
+           careers: [
         "Systems Analyst",
         "Urban Planner",
         "Process Improvement Specialist",
@@ -89,7 +89,8 @@ const careerClashQuestions = [
       ],
       interest: "systemsThinking"
     }
-    ,
+  },
+
 {
   question: "Which kind of work would feel more satisfying?",
 
