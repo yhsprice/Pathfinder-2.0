@@ -88,4 +88,10 @@ const pathfinderSections = [
     traits: ["careerAwareness", "interestFit", "realisticFit"]
   }
 
+  {
+  id: "careerClash",
+  title: "Career Clash",
+  description: "Choose between different work lives, environments, and career paths to discover what kinds of work fit you best."
+}
+
 ];
