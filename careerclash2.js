@@ -88,7 +88,7 @@ const careerClashQuestions = [
         "Project Manager"
       ],
       interest: "systemsThinking"
-    },
+    }
     ,
 {
   question: "Which kind of work would feel more satisfying?",
