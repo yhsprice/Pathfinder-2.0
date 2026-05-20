@@ -122,5 +122,86 @@ questions.hard.push(
     ],
     answer: 1,
     trait: "communication"
+  },
+
+  questions.easy.push(
+  {
+    sectionId: "peopleJudgment",
+    section: "People, Communication & Judgment",
+    question: "Someone looks confused after instructions. What should you do?",
+    options: ["Check understanding", "Keep talking", "Walk away", "Laugh"],
+    answer: 0,
+    trait: "communication"
+  },
+  {
+    sectionId: "peopleJudgment",
+    section: "People, Communication & Judgment",
+    question: "A teammate is left out of a group task. What is the best move?",
+    options: ["Invite them in", "Ignore them", "Blame them", "Exclude them more"],
+    answer: 0,
+    trait: "teamwork"
+  },
+  {
+    sectionId: "peopleJudgment",
+    section: "People, Communication & Judgment",
+    question: "A customer is frustrated. What matters most first?",
+    options: ["Listen calmly", "Win the argument", "Talk louder", "Rush them"],
+    answer: 0,
+    trait: "socialJudgment"
   }
+);
+
+questions.medium.push(
+  {
+    sectionId: "peopleJudgment",
+    section: "People, Communication & Judgment",
+    question: "A group keeps talking over one person. What should a good leader do?",
+    options: ["Make space for input", "Ignore it", "End the project", "Pick favorites"],
+    answer: 0,
+    trait: "teamwork"
+  },
+  {
+    sectionId: "peopleJudgment",
+    section: "People, Communication & Judgment",
+    question: "Someone gives short answers and avoids eye contact. What is the best assumption?",
+    options: ["They may be uncomfortable", "They are rude", "They are lazy", "They hate everyone"],
+    answer: 0,
+    trait: "socialJudgment"
+  },
+  {
+    sectionId: "peopleJudgment",
+    section: "People, Communication & Judgment",
+    question: "A message caused confusion. What is the best next step?",
+    options: ["Clarify clearly", "Blame the reader", "Ignore replies", "Send more vague messages"],
+    answer: 0,
+    trait: "communication"
+  }
+);
+
+questions.hard.push(
+  {
+    sectionId: "peopleJudgment",
+    section: "People, Communication & Judgment",
+    question: "A team avoids conflict but keeps missing important issues. What is likely happening?",
+    options: ["Avoiding hard conversations", "Perfect teamwork", "Too much honesty", "No problem exists"],
+    answer: 0,
+    trait: "socialJudgment"
+  },
+  {
+    sectionId: "peopleJudgment",
+    section: "People, Communication & Judgment",
+    question: "A strong worker hurts morale. What should leadership address?",
+    options: ["Results and behavior", "Only results", "Only popularity", "Nothing"],
+    answer: 0,
+    trait: "teamwork"
+  },
+  {
+    sectionId: "peopleJudgment",
+    section: "People, Communication & Judgment",
+    question: "A client asks for something unrealistic. What is best?",
+    options: ["Offer realistic choices", "Promise anything", "Avoid them", "Blame policy"],
+    answer: 0,
+    trait: "communication"
+  }
+);
 );
