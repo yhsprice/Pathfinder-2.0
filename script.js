@@ -279,6 +279,41 @@ function selectAnswer(selectedIndex) {
     button.classList.add("disabled");
   });
 
+if (currentQuestion.type === "careerChoice") {
+  const selectedCareers = currentQuestion.careerMap[selectedOption.originalIndex];
+  const selectedInterest = currentQuestion.interestMap[selectedOption.originalIndex];
+
+  if (!traits[selectedInterest]) {
+    traits[selectedInterest] = 0;
+  }
+
+  traits[selectedInterest]++;
+
+  selectedCareers.forEach(career => {
+    const careerKey = "career_" + career;
+
+    if (!traits[careerKey]) {
+      traits[careerKey] = 0;
+    }
+
+    traits[careerKey]++;
+  });
+
+  totalQuestions++;
+
+  feedbackBox.innerHTML = `
+    <div class="feedback-box">
+      Choice saved. Pathfinder is learning what kind of work sounds meaningful to you.
+    </div>
+  `;
+
+  setTimeout(() => {
+    showQuestion();
+  }, 900);
+
+  return;
+}
+  
   if (currentQuestion.type === "interest") {
     const selectedInterest =
       currentQuestion.interestMap[selectedOption.originalIndex];
