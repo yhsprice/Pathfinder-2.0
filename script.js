@@ -624,28 +624,27 @@ function startCareerClash() {
 
 const topResults = sortedResults
   .map(([career, score], index) => `
-    <div class="career-result-card">
-      <div class="career-rank">#${index + 1}</div>
+  <div class="career-result-card">
 
-      <div class="career-result-info">
-        <h2>${career}</h2>
-        <p>
-          Pathfinder noticed repeated interest in this type of work environment,
-          problem-solving style, and career lifestyle.
-        </p>
+    <div class="career-rank">
+      #${index + 1}
+    </div>
 
-        <div class="career-score-bar">
-          <div class="career-score-fill"
-               style="width:${Math.min(score * 22, 100)}%">
-          </div>
-        </div>
+    <h2>${career}</h2>
 
-        <span class="career-score-text">
-          Interest Match Score: ${score}
-        </span>
+    <div class="career-score-bar">
+      <div class="career-score-fill"
+           style="width:${Math.min(score * 30, 100)}%">
       </div>
     </div>
-  `)
+
+    <span class="career-score-text">
+      Match Strength: ${score}
+    </span>
+
+  </div>
+`)
+  
   .join("");
 
       container.innerHTML = `
