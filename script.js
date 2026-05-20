@@ -619,16 +619,43 @@ function startCareerClash() {
     const container = document.querySelector(".home-screen");
 
     if (!item) {
-      const topResults = Object.entries(clashResults)
-        .sort((a, b) => b[1] - a[1])
-        .map(([career]) => `<p><strong>${career}</strong></p>`)
-        .join("");
+      const sortedResults = Object.entries(clashResults)
+  .sort((a, b) => b[1] - a[1]);
+
+const topResults = sortedResults
+  .map(([career, score], index) => `
+    <div class="career-result-card">
+      <div class="career-rank">#${index + 1}</div>
+
+      <div class="career-result-info">
+        <h2>${career}</h2>
+        <p>
+          Pathfinder noticed repeated interest in this type of work environment,
+          problem-solving style, and career lifestyle.
+        </p>
+
+        <div class="career-score-bar">
+          <div class="career-score-fill"
+               style="width:${Math.min(score * 22, 100)}%">
+          </div>
+        </div>
+
+        <span class="career-score-text">
+          Interest Match Score: ${score}
+        </span>
+      </div>
+    </div>
+  `)
+  .join("");
 
       container.innerHTML = `
         <div class="clash-page">
           <div class="clash-results-card">
             <h1>Career Clash Results</h1>
-            <p>You leaned toward these career possibilities:</p>
+           <p class="career-results-intro">
+  Based on your choices, Pathfinder noticed patterns in the
+  environments, challenges, and work styles you repeatedly preferred.
+</p>
             ${topResults || "<p>No choices recorded.</p>"}
             <button onclick="restartQuiz()">Back to Home</button>
           </div>
