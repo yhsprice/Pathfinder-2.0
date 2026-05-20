@@ -80,18 +80,16 @@ const pathfinderSections = [
     traits: ["workStyle", "pressureResponse", "persistence"]
   },
 
-  {
-    id: "careerRealityFit",
-    title: "Career Reality & Interest Fit",
-    intro:
-      "This section compares interests with the real work, training, schedules, stress, and daily tasks behind careers.",
-    traits: ["careerAwareness", "interestFit", "realisticFit"]
-  }
+ {
+  id: "careerRealityFit",
+  title: "Career Interest Reality Check",
+  description: "Compare career interests against real tasks, stress, training, and lifestyle."
+},
 
-  {
+{
   id: "careerClash",
   title: "Career Clash",
-  description: "Choose between different work lives, environments, and career paths to discover what kinds of work fit you best."
+  description: "Choose between different work lives, environments, and career paths to discover what fits you best."
 }
 
 ];
