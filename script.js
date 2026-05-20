@@ -757,71 +757,7 @@ function startCareerClash() {
   showClash();
 }
 
-  function buildClashCard(choice, side, colorClass) {
-    return `
-      <button class="career-clash-card ${colorClass}" onclick="chooseClash('${side}')">
-        <div class="career-clash-icon">
-          ${colorClass === "purple" ? "🛠️" : "📊"}
-        </div>
-
-        <h2>${choice.title}</h2>
-
-        <p class="career-clash-description">
-          ${choice.description || "Choose this if this kind of work sounds interesting to you."}
-        </p>
-
-        <hr>
-
-        <h3 class="good-heading">👍 The Good Parts</h3>
-        <ul>
-          ${choice.positives.map(item => `<li>✅ ${item}</li>`).join("")}
-        </ul>
-
-        <h3 class="trade-heading">⚠️ The Tradeoffs</h3>
-        <ul>
-          ${choice.negatives.map(item => `<li>🟠 ${item}</li>`).join("")}
-        </ul>
-
-        <div class="choose-button">
-          ♡ This Sounds Better
-          <span>Choose this work life</span>
-        </div>
-      </button>
-    `;
-  }
-
-  window.chooseClash = function(side) {
-    const item = careerClashQuestions[currentClash];
-    const choice = item[side];
-    const otherSide = side === "left" ? "right" : "left";
-    const otherChoice = item[otherSide];
-
-    choice.careers.forEach(career => {
-      clashResults[career] = (clashResults[career] || 0) + 1;
-    });
-
-    document.getElementById("feedbackBox").innerHTML = `
-      <div class="clash-feedback">
-        You leaned toward <strong>${choice.title}</strong>
-        over <strong>${otherChoice.title}</strong>.
-        <br>
-        Careers connected to this choice may include:
-        <strong>${choice.careers.slice(0, 3).join(", ")}</strong>.
-        <br><br>
-        <button onclick="nextClashQuestion()">Next Career Clash</button>
-      </div>
-    `;
-  };
-
-  window.nextClashQuestion = function() {
-    currentClash++;
-    showClash();
-  };
-
-  showClash();
-}
-
-function restartQuiz() {
+ function restartQuiz() {
   clearInterval(timer);
   location.reload();
 }
