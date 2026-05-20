@@ -91,7 +91,7 @@ const careerClashQuestions = [
     }
   },
 
-{
+  {
   question: "Which kind of work would feel more satisfying?",
 
   left: {
