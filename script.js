@@ -611,116 +611,152 @@ function getNextSectionButton() {
 }
 
 function startCareerClash() {
-  let currentClash = 0;
+  function startCareerClash() {
+  let currentChampion = careerClashQuestions[0].left;
+  let challengerIndex = 0;
+  let clashRounds = 0;
+  let maxClashRounds = 15;
   let clashResults = {};
 
+  const challengers = [];
+
+  careerClashQuestions.forEach(item => {
+    challengers.push(item.left);
+    challengers.push(item.right);
+  });
+
+  challengers.shift();
+
   function showClash() {
-    const item = careerClashQuestions[currentClash];
+    const challenger = challengers[challengerIndex];
     const container = document.querySelector(".home-screen");
 
-    if (!item) {
-      const sortedResults = Object.entries(clashResults)
-  .sort((a, b) => b[1] - a[1]);
-
-const topResults = sortedResults
-  .map(([career, score], index) => `
-  <div class="career-result-card">
-
-    <div class="career-rank">
-      #${index + 1}
-    </div>
-
-    <h2>${career}</h2>
-
-    <div class="career-score-bar">
-      <div class="career-score-fill"
-           style="width:${Math.min(score * 30, 100)}%">
-      </div>
-    </div>
-
-    <span class="career-score-text">
-      Match Strength: ${score}
-    </span>
-
-  </div>
-`)
-  
-  .join("");
-
-      container.innerHTML = `
-        <div class="clash-page">
-          <div class="clash-results-card">
-            <h1>Career Clash Results</h1>
-           <p class="career-results-intro">
-  Based on your choices, Pathfinder noticed patterns in the
-  environments, challenges, and work styles you repeatedly preferred.
-</p>
-            ${topResults || "<p>No choices recorded.</p>"}
-            <button onclick="restartQuiz()">Back to Home</button>
-          </div>
-        </div>
-      `;
+    if (!challenger || clashRounds >= maxClashRounds) {
+      showCareerClashResults(container);
       return;
     }
 
     container.innerHTML = `
       <div class="clash-page">
 
-        <div class="clash-topbar">
-          <div class="clash-pill">
-            <span class="clash-icon">🎯</span>
-            <div>
-              <strong>Your Journey</strong>
-              <p>Question ${currentClash + 1} of ${careerClashQuestions.length}</p>
-            </div>
-          </div>
+        <h1 class="clash-title">CAREER CLASH</h1>
 
-          <div class="clash-pill">
-            <span class="clash-icon">⏱️</span>
-            <div>
-              <strong>Take Your Time</strong>
-              <p>There are no wrong answers.</p>
-            </div>
-          </div>
-        </div>
-
-        <h1 class="clash-title">✨ CAREER CLASH ✨</h1>
-        <p class="clash-subtitle">Choose the work life that sounds more interesting to you.</p>
+        <p class="clash-subtitle">
+          Your chosen path stays. A new career style challenges it.
+        </p>
 
         <div class="clash-card-grid">
 
-          ${buildClashCard(item.left, "left", "purple")}
-
-          ${buildClashCard(item.right, "right", "blue")}
+          ${buildCareerCard(currentChampion, "champion")}
+          ${buildCareerCard(challenger, "challenger")}
 
         </div>
 
         <div id="feedbackBox"></div>
 
-        <div class="clash-info-row">
-          <div>
-            <strong>💡 No Wrong Answers</strong>
-            <p>We just want to learn what kind of work life appeals to you more.</p>
-          </div>
-
-          <div>
-            <strong>🕒 Take Your Time</strong>
-            <p>Think about what you would enjoy most day to day.</p>
-          </div>
-
-          <div>
-            <strong>🧭 Discover New Possibilities</strong>
-            <p>Your choices help us find careers you may not know exist yet.</p>
-          </div>
-        </div>
-
-        <button class="clash-skip-btn" onclick="restartQuiz()">
-          I’ll Decide Later
-        </button>
-
       </div>
     `;
   }
+
+  function buildCareerCard(choice, side) {
+    return `
+      <button class="career-clash-card ${side === "champion" ? "purple" : "blue"}"
+        onclick="chooseCareerClash('${side}')">
+
+        <div class="career-clash-icon">
+          ${side === "champion" ? "🏆" : "⚡"}
+        </div>
+
+        <h2>${choice.title}</h2>
+
+        <p class="career-clash-description">
+          ${choice.description || "This work style may connect to careers you have not considered yet."}
+        </p>
+
+        <h3 class="good-heading">The Good Parts</h3>
+        <ul>
+          ${choice.positives.map(item => `<li>✅ ${item}</li>`).join("")}
+        </ul>
+
+        <h3 class="trade-heading">The Tradeoffs</h3>
+        <ul>
+          ${choice.negatives.map(item => `<li>⚠️ ${item}</li>`).join("")}
+        </ul>
+
+        <div class="choose-button">
+          Choose This Path
+        </div>
+
+      </button>
+    `;
+  }
+
+  window.chooseCareerClash = function(side) {
+    const challenger = challengers[challengerIndex];
+
+    const chosen = side === "champion" ? currentChampion : challenger;
+    const notChosen = side === "champion" ? challenger : currentChampion;
+
+    chosen.careers.forEach(career => {
+      clashResults[career] = (clashResults[career] || 0) + 1;
+    });
+
+    clashResults[chosen.title] = (clashResults[chosen.title] || 0) + 1;
+
+    document.getElementById("feedbackBox").innerHTML = `
+      <div class="clash-feedback">
+        You chose <strong>${chosen.title}</strong>
+        over <strong>${notChosen.title}</strong>.
+
+        <br><br>
+
+        <button onclick="nextCareerClash()">
+          Next Career Clash
+        </button>
+      </div>
+    `;
+
+    currentChampion = chosen;
+  };
+
+  window.nextCareerClash = function() {
+    clashRounds++;
+    challengerIndex++;
+    showClash();
+  };
+
+  function showCareerClashResults(container) {
+    const topResults = Object.entries(clashResults)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10)
+      .map(([career, score], index) => `
+        <div class="career-result-card">
+          <div class="career-rank">#${index + 1}</div>
+          <h2>${career}</h2>
+          <span class="career-score-text">Match Strength: ${score}</span>
+        </div>
+      `)
+      .join("");
+
+    container.innerHTML = `
+      <div class="clash-page">
+        <div class="clash-results-card">
+          <h1>Career Clash Results</h1>
+
+          <p class="career-results-intro">
+            Based on your choices, these are the career paths and work styles you kept choosing.
+          </p>
+
+          ${topResults || "<p>No choices recorded.</p>"}
+
+          <button onclick="restartQuiz()">Back to Home</button>
+        </div>
+      </div>
+    `;
+  }
+
+  showClash();
+}
 
   function buildClashCard(choice, side, colorClass) {
     return `
