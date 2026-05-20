@@ -611,7 +611,6 @@ function getNextSectionButton() {
 }
 
 function startCareerClash() {
-  function startCareerClash() {
   let currentChampion = careerClashQuestions[0].left;
   let challengerIndex = 0;
   let clashRounds = 0;
