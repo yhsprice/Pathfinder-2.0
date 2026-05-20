@@ -568,32 +568,6 @@ function getNextSectionButton() {
   if (nextSection) {
     return `
       <button onclick="startSection('${nextSection.id}')">
-        Continue to Next Section
-      </button>
-
-      <button onclick="restartQuiz()" class="secondary-btn">
-        Back to Home
-      </button>
-    `;
-  }
-
-  return `
-    <button onclick="restartQuiz()">
-      Finish Pathfinder
-    </button>
-  `;
-}
-
-function getNextSectionButton() {
-  const currentIndex = pathfinderSections.findIndex(
-    section => section.id === activeSection
-  );
-
-  const nextSection = pathfinderSections[currentIndex + 1];
-
-  if (nextSection) {
-    return `
-      <button onclick="startSection('${nextSection.id}')">
         Continue to ${nextSection.title}
       </button>
 
