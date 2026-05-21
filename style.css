@@ -1009,3 +1009,26 @@ body {
   opacity: 0.7;
   pointer-events: none;
 }
+
+.visual-pattern {
+  margin: 24px auto;
+  padding: 22px;
+
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.06);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 10px;
+
+  text-align: center;
+
+  max-width: 700px;
+
+  box-shadow:
+    inset 0 0 20px rgba(255,255,255,0.03),
+    0 0 25px rgba(0,0,0,0.2);
+}
