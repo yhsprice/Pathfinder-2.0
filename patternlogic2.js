@@ -407,13 +407,13 @@ logicCategories.elimination.push(
 
 questions.easy.push(
   ...logicCategories.sequences.map(q => ({
-    sectionId: "patternLogicAdvanced",
+    sectionId: "patternLogic",
     section: "Pattern & Logic Recognition",
     ...q
   })),
 
   ...logicCategories.oddOneOut.map(q => ({
-    sectionId: "patternLogicAdvanced",
+    sectionId: "patternLogic",
     section: "Pattern & Logic Recognition",
     ...q
   }))
@@ -421,7 +421,7 @@ questions.easy.push(
 
 questions.medium.push(
   ...logicCategories.quickLogic.map(q => ({
-    sectionId: "patternLogicAdvanced",
+    sectionId: "patternLogic",
     section: "Pattern & Logic Recognition",
     ...q
   }))
@@ -429,7 +429,7 @@ questions.medium.push(
 
 questions.hard.push(
   ...logicCategories.elimination.map(q => ({
-    sectionId: "patternLogicAdvanced",
+    sectionId: "patternLogic",
     section: "Pattern & Logic Recognition",
     ...q
   }))
