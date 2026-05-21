@@ -657,7 +657,9 @@ function startCareerClash() {
         </ul>
 
         <div class="choose-button">
-          Choose This Path
+          ${side === "champion"
+          ? "✔ Do You Want To Do This?"
+          : "⭐ Or Do You Like This Better?"}
         </div>
 
       </button>
