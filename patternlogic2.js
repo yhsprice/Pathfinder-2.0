@@ -1,3 +1,84 @@
+const logicCategories = {
+  sequences: [],
+  symbols: [],
+  visualPatterns: [],
+  elimination: [],
+  quickLogic: [],
+  oddOneOut: []
+};
+
+logicCategories.sequences.push(
+  {
+    question: "What comes next?",
+    visual: "⬜ 🟦 ⬜ 🟦 ⬜ ?",
+    options: ["⬜", "🟦", "⬛", "🟥"],
+    answer: 1,
+    trait: "patternRecognition"
+  },
+
+  {
+    question: "Which number completes the pattern?",
+    visual: "2 → 4 → 8 → 16 → ?",
+    options: ["18", "24", "32", "30"],
+    answer: 2,
+    trait: "logic"
+  }
+);
+
+logicCategories.oddOneOut.push(
+  {
+    question: "Which item does NOT belong?",
+    options: [
+      "Hammer",
+      "Wrench",
+      "Drill",
+      "Banana"
+    ],
+    answer: 3,
+    trait: "categorization"
+  },
+
+  {
+    question: "Which does NOT fit the group?",
+    options: [
+      "Triangle",
+      "Square",
+      "Circle",
+      "Banana"
+    ],
+    answer: 3,
+    trait: "logic"
+  }
+);
+
+logicCategories.quickLogic.push(
+  {
+    question: "A flashlight needs batteries to work. The flashlight does not turn on. What is MOST likely?",
+    options: [
+      "The batteries are dead",
+      "The room is too bright",
+      "Flashlights hate Tuesdays",
+      "The batteries became sandwiches"
+    ],
+    answer: 0,
+    trait: "solutionThinking"
+  }
+);
+
+logicCategories.elimination.push(
+  {
+    question: "Three doors exist. One leads outside. One leads to a closet. One leads nowhere. You hear traffic behind Door B. Which is MOST likely correct?",
+    options: [
+      "Door B leads outside",
+      "Door A leads outside",
+      "Door C leads outside",
+      "Traffic is illegal"
+    ],
+    answer: 0,
+    trait: "logic"
+  }
+);
+
 questions.easy.push(
   {
     sectionId: "patternLogic",
