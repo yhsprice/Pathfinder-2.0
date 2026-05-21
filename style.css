@@ -962,3 +962,45 @@ body {
   font-weight: 700;
   color: #bfdbfe;
 }
+
+.pathfinder-notice {
+  max-width: 1000px;
+  margin: 22px auto;
+  padding: 20px 28px;
+
+  border-radius: 24px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(30,41,59,0.95),
+    rgba(15,23,42,0.95)
+  );
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.6;
+
+  text-align: center;
+
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.3),
+    inset 0 0 18px rgba(255,255,255,0.03);
+}
+
+.pathfinder-notice.healthcare {
+  border-color: #22c55e;
+}
+
+.pathfinder-notice.trades {
+  border-color: #f97316;
+}
+
+.pathfinder-notice.creative {
+  border-color: #c084fc;
+}
+
+.pathfinder-notice.technology {
+  border-color: #38bdf8;
+}
