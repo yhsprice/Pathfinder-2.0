@@ -590,6 +590,7 @@ function startCareerClash() {
   let clashRounds = 0;
   let maxClashRounds = 15;
   let clashResults = {};
+  let clashLocked = false;
 
   const challengers = [];
 
@@ -601,6 +602,8 @@ function startCareerClash() {
   challengers.shift();
 
   function showClash() {
+    clashLocked = false;
+    
     const challenger = challengers[challengerIndex];
     const container = document.querySelector(".home-screen");
 
@@ -669,6 +672,14 @@ function startCareerClash() {
   }
 
   window.chooseCareerClash = function(side) {
+    if (clashLocked) return;
+clashLocked = true;
+
+    document.querySelectorAll(".career-clash-card").forEach(card => {
+  card.disabled = true;
+  card.classList.add("disabled");
+});
+    
     const challenger = challengers[challengerIndex];
 
     const chosen = side === "champion" ? currentChampion : challenger;
