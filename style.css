@@ -1063,3 +1063,31 @@ body {
 .career-clash-card:hover {
   transform: translateY(-4px) scale(1.01);
 }
+
+.answer-btn {
+  background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(226,232,240,0.96));
+  color: #0f172a;
+  border: 2px solid rgba(148,163,184,0.45);
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  font-weight: 800;
+}
+
+.answer-btn:hover {
+  background: linear-gradient(135deg, #dbeafe, #fef3c7);
+  border-color: #60a5fa;
+}
+
+.answer-btn.correct {
+  background: linear-gradient(135deg, #bbf7d0, #dcfce7) !important;
+  color: #064e3b !important;
+}
+
+.answer-btn.incorrect {
+  background: linear-gradient(135deg, #fecaca, #fee2e2) !important;
+  color: #7f1d1d !important;
+}
+
+.answer-btn.disabled {
+  opacity: 0.85;
+}
