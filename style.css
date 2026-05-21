@@ -1004,3 +1004,8 @@ body {
 .pathfinder-notice.technology {
   border-color: #38bdf8;
 }
+
+.career-clash-card.disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
