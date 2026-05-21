@@ -242,3 +242,195 @@ questions.hard.push(
     ...q
   }))
 );
+
+logicCategories.sequences.push(
+
+{
+  question: "What comes next?",
+  visual: "🔺 🔵 🔺 🔵 🔺 ?",
+  options: ["🔺", "🔵", "⬛", "⭐"],
+  answer: 1,
+  trait: "patternRecognition"
+},
+
+{
+  question: "Which number belongs next?",
+  visual: "5 → 10 → 15 → 20 → ?",
+  options: ["21", "25", "30", "35"],
+  answer: 1,
+  trait: "logic"
+},
+
+{
+  question: "What comes next?",
+  visual: "🟩 🟨 🟩 🟨 🟩 ?",
+  options: ["🟨", "🟩", "⬜", "⬛"],
+  answer: 0,
+  trait: "patternRecognition"
+},
+
+{
+  question: "Find the missing number.",
+  visual: "3 → 6 → 12 → 24 → ?",
+  options: ["30", "36", "48", "60"],
+  answer: 2,
+  trait: "logic"
+}
+
+);
+
+logicCategories.oddOneOut.push(
+
+{
+  question: "Which item does NOT belong?",
+  options: [
+    "Bus",
+    "Train",
+    "Airplane",
+    "Potato"
+  ],
+  answer: 3,
+  trait: "categorization"
+},
+
+{
+  question: "Which item does NOT fit?",
+  options: [
+    "Keyboard",
+    "Monitor",
+    "Mouse",
+    "Banana"
+  ],
+  answer: 3,
+  trait: "logic"
+},
+
+{
+  question: "Which item does NOT belong?",
+  options: [
+    "Doctor",
+    "Nurse",
+    "Thermometer",
+    "Teacher"
+  ],
+  answer: 3,
+  trait: "categorization"
+},
+
+{
+  question: "Which does NOT fit the pattern?",
+  options: [
+    "🔵",
+    "🟢",
+    "🟡",
+    "🚗"
+  ],
+  answer: 3,
+  trait: "logic"
+}
+
+);
+
+logicCategories.quickLogic.push(
+
+{
+  question: "A phone will not charge. What should be checked FIRST?",
+  options: [
+    "Charging cable",
+    "The wallpaper",
+    "The weather",
+    "The apps"
+  ],
+  answer: 0,
+  trait: "solutionThinking"
+},
+
+{
+  question: "A classroom projector stopped working during a presentation. What is MOST reasonable first?",
+  options: [
+    "Check power connection",
+    "Buy a new school",
+    "Blame gravity",
+    "Turn off the lights forever"
+  ],
+  answer: 0,
+  trait: "practicalThinking"
+},
+
+{
+  question: "You forgot your house key. What is the BEST next step?",
+  options: [
+    "Contact someone with access",
+    "Break a window immediately",
+    "Sleep outside forever",
+    "Move away"
+  ],
+  answer: 0,
+  trait: "judgment"
+},
+
+{
+  question: "A recipe tastes too salty. What would MOST likely help?",
+  options: [
+    "Reduce salt next time",
+    "Add batteries",
+    "Freeze the spoon",
+    "Turn off the lights"
+  ],
+  answer: 0,
+  trait: "logic"
+}
+
+);
+
+logicCategories.elimination.push(
+
+{
+  question: "A store closes at 9 PM. You arrive at 9:15 PM. What is MOST likely true?",
+  options: [
+    "The store is closed",
+    "The store just opened",
+    "The store became a zoo",
+    "Time stopped"
+  ],
+  answer: 0,
+  trait: "logic"
+},
+
+{
+  question: "You hear thunder and see dark clouds. What is MOST likely?",
+  options: [
+    "Rain is coming",
+    "Penguins are attacking",
+    "The moon exploded",
+    "The clouds are fake"
+  ],
+  answer: 0,
+  trait: "reasoning"
+},
+
+{
+  question: "A coworker is carrying many heavy boxes. What is MOST reasonable?",
+  options: [
+    "Offer help",
+    "Hide from them",
+    "Throw more boxes",
+    "Pretend gravity stopped"
+  ],
+  answer: 0,
+  trait: "socialJudgment"
+},
+
+{
+  question: "A laptop suddenly becomes very hot and loud. What is MOST likely happening?",
+  options: [
+    "It is overworking",
+    "It is happy",
+    "It needs water",
+    "The keyboard is scared"
+  ],
+  answer: 0,
+  trait: "problemSolving"
+}
+
+);
