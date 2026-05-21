@@ -1091,3 +1091,25 @@ body {
 .answer-btn.disabled {
   opacity: 0.85;
 }
+
+.progress-bar {
+  height: 14px;
+  background: rgba(255,255,255,0.14);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 14px 0 18px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #9333ea, #2563eb, #06b6d4);
+  border-radius: 999px;
+  transition: width 0.45s ease;
+  box-shadow: 0 0 18px rgba(56,189,248,0.45);
+}
+
+.progress-text {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #e0f2fe;
+}
