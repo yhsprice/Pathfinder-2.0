@@ -87,16 +87,6 @@ function getRandomQuestion() {
   );
 
   if (pool.length === 0) {
-    pool = ["easy", "medium", "hard"]
-      .flatMap(level => questions[level])
-      .filter(
-        question =>
-          question.sectionId === activeSection &&
-          !usedQuestions.includes(question.question)
-      );
-  }
-
-  if (pool.length === 0) {
     return null;
   }
 
