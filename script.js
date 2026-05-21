@@ -625,6 +625,8 @@ function startCareerClash() {
 
         </div>
 
+        ${clashRounds >= 3 ? getPathfinderNotice() : ""}
+
         <div id="feedbackBox"></div>
 
       </div>
@@ -697,6 +699,77 @@ function startCareerClash() {
     clashRounds++;
     challengerIndex++;
     showClash();
+
+     function getPathfinderNotice() {
+
+  const topCareer = Object.entries(clashResults)
+    .sort((a, b) => b[1] - a[1])[0];
+
+  if (!topCareer) return "";
+
+  const name = topCareer[0];
+
+  if (
+    name.includes("Nurse") ||
+    name.includes("Patient") ||
+    name.includes("Medical") ||
+    name.includes("Therapist")
+  ) {
+    return `
+      <div class="pathfinder-notice healthcare">
+        🩺 Pathfinder Notice:
+        You repeatedly choose helping-focused healthcare environments.
+      </div>
+    `;
+  }
+
+  if (
+    name.includes("Electrician") ||
+    name.includes("HVAC") ||
+    name.includes("Welder") ||
+    name.includes("Technician")
+  ) {
+    return `
+      <div class="pathfinder-notice trades">
+        🛠 Pathfinder Notice:
+        You consistently prefer hands-on technical problem solving.
+      </div>
+    `;
+  }
+
+  if (
+    name.includes("Designer") ||
+    name.includes("Creator") ||
+    name.includes("Video")
+  ) {
+    return `
+      <div class="pathfinder-notice creative">
+        🎨 Pathfinder Notice:
+        Creative and visual career paths are standing out strongly.
+      </div>
+    `;
+  }
+
+  if (
+    name.includes("Analyst") ||
+    name.includes("Cyber") ||
+    name.includes("Software") ||
+    name.includes("Data")
+  ) {
+    return `
+      <div class="pathfinder-notice technology">
+        💻 Pathfinder Notice:
+        Pathfinder sees strong interest in analytical and technology-focused work.
+      </div>
+    `;
+  }
+
+  return `
+    <div class="pathfinder-notice">
+      🧭 Pathfinder is beginning to notice consistent career preference patterns.
+    </div>
+  `;
+}
   };
 
   function showCareerClashResults(container) {
