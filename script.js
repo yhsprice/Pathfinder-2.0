@@ -707,11 +707,12 @@ clashLocked = true;
   };
 
    window.nextCareerClash = function() {
-    clashRounds++;
-    challengerIndex++;
-    showClash();
+  clashRounds++;
+  challengerIndex++;
+  showClash();
+};
 
-     function getPathfinderNotice() {
+function getPathfinderNotice() {
 
   const topCareer = Object.entries(clashResults)
     .sort((a, b) => b[1] - a[1])[0];
@@ -781,7 +782,6 @@ clashLocked = true;
     </div>
   `;
 }
-  };
 
   function showCareerClashResults(container) {
     const topResults = Object.entries(clashResults)
