@@ -677,20 +677,18 @@ function startCareerClash() {
     clashResults[chosen.title] = (clashResults[chosen.title] || 0) + 1;
 
     document.getElementById("feedbackBox").innerHTML = `
-      <div class="clash-feedback">
-        You chose <strong>${chosen.title}</strong>
-        over <strong>${notChosen.title}</strong>.
-
-        <br><br>
-
-        <button onclick="nextCareerClash()">
-          Next Career Clash
-        </button>
-      </div>
-    `;
+  <div class="clash-feedback">
+    You chose <strong>${chosen.title}</strong>
+    over <strong>${notChosen.title}</strong>.
+  </div>
+`;
 
     currentChampion = chosen;
   };
+
+  setTimeout(() => {
+  nextCareerClash();
+}, 1400);
 
   window.nextCareerClash = function() {
     clashRounds++;
