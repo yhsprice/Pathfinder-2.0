@@ -1,18 +1,19 @@
 const careerFitRules = {
+
   healthcare: [
     "helpingPeople",
-    "readingComprehension",
     "attentionToDetail",
-    "science",
-    "active"
+    "readingComprehension",
+    "active",
+    "science"
   ],
 
   technology: [
     "logic",
     "patternRecognition",
     "technology",
-    "data",
-    "problemSolving"
+    "problemSolving",
+    "data"
   ],
 
   trades: [
@@ -27,8 +28,8 @@ const careerFitRules = {
     "mathReasoning",
     "communication",
     "organization",
-    "data",
-    "problemSolving"
+    "problemSolving",
+    "data"
   ],
 
   creative: [
@@ -36,5 +37,20 @@ const careerFitRules = {
     "ideaGeneration",
     "visualThinking",
     "communication"
+  ],
+
+  education: [
+    "communication",
+    "helpingPeople",
+    "readingComprehension",
+    "socialJudgment"
+  ],
+
+  fieldwork: [
+    "handsOn",
+    "active",
+    "practicalThinking",
+    "independent"
   ]
+
 };
