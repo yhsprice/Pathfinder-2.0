@@ -213,36 +213,6 @@ questions.hard.push(
   }
 );
 
-questions.easy.push(
-  ...logicCategories.sequences.map(q => ({
-    sectionId: "patternLogicAdvanced",
-    section: "Pattern & Logic Recognition",
-    ...q
-  })),
-
-  ...logicCategories.oddOneOut.map(q => ({
-    sectionId: "patternLogicAdvanced",
-    section: "Pattern & Logic Recognition",
-    ...q
-  }))
-);
-
-questions.medium.push(
-  ...logicCategories.quickLogic.map(q => ({
-    sectionId: "patternLogicAdvanced",
-    section: "Pattern & Logic Recognition",
-    ...q
-  }))
-);
-
-questions.hard.push(
-  ...logicCategories.elimination.map(q => ({
-    sectionId: "patternLogicAdvanced",
-    section: "Pattern & Logic Recognition",
-    ...q
-  }))
-);
-
 logicCategories.sequences.push(
 
 {
@@ -434,3 +404,34 @@ logicCategories.elimination.push(
 }
 
 );
+
+questions.easy.push(
+  ...logicCategories.sequences.map(q => ({
+    sectionId: "patternLogicAdvanced",
+    section: "Pattern & Logic Recognition",
+    ...q
+  })),
+
+  ...logicCategories.oddOneOut.map(q => ({
+    sectionId: "patternLogicAdvanced",
+    section: "Pattern & Logic Recognition",
+    ...q
+  }))
+);
+
+questions.medium.push(
+  ...logicCategories.quickLogic.map(q => ({
+    sectionId: "patternLogicAdvanced",
+    section: "Pattern & Logic Recognition",
+    ...q
+  }))
+);
+
+questions.hard.push(
+  ...logicCategories.elimination.map(q => ({
+    sectionId: "patternLogicAdvanced",
+    section: "Pattern & Logic Recognition",
+    ...q
+  }))
+);
+
