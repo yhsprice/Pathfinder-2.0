@@ -684,13 +684,14 @@ function startCareerClash() {
 `;
 
     currentChampion = chosen;
-  };
-
-  setTimeout(() => {
+    
+     setTimeout(() => {
   nextCareerClash();
 }, 1400);
+    
+  };
 
-  window.nextCareerClash = function() {
+   window.nextCareerClash = function() {
     clashRounds++;
     challengerIndex++;
     showClash();
