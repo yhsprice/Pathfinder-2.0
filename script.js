@@ -179,6 +179,12 @@ if (engagementScore <= 40) {
   ${currentQuestion.question}
 </h3>
 
+${currentQuestion.visual ? `
+  <div class="visual-pattern">
+    ${currentQuestion.visual}
+  </div>
+` : ""}
+
         <div class="answers">
           ${currentShuffledOptions.map((option, index) => `
             <button class="answer-btn" onclick="selectAnswer(${index})">
