@@ -2,7 +2,7 @@ function startReactionSprint() {
 
   const container = document.querySelector(".home-screen");
 
-  let reactionQuestions = generateReactionQuestions(40);
+  let reactionQuestions = generateReactionQuestions(20);
 
   let currentIndex = 0;
   let score = 0;
