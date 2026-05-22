@@ -103,11 +103,19 @@ function startReactionSprint() {
         </div>
 
         <p>
-          This mode measures reaction speed,
-          fast reasoning,
-          instinctive decision making,
-          and rapid pattern recognition.
-        </p>
+  This mode measures how quickly you process information, recognize patterns,
+  compare choices, and make decisions under light time pressure.
+</p>
+
+<div class="reaction-meaning">
+  <h2>What this may suggest</h2>
+  <p>
+    A higher score may show strong quick-thinking, visual scanning,
+    mental math, attention, and fast decision-making. A lower score does not
+    mean low ability — it may mean you work better with time to think,
+    fewer distractions, or less pressure.
+  </p>
+</div>
 
         <button onclick="restartQuiz()">
           Back to Home
