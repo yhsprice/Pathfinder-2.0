@@ -1267,3 +1267,92 @@ body {
   color: #bfdbfe;
   margin-bottom: 20px;
 }
+
+.reaction-page {
+  min-height: 100vh;
+  padding: 36px;
+  background: radial-gradient(circle at top, #312e81, #020617 65%);
+  color: white;
+}
+
+.reaction-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 950px;
+  margin: 0 auto 28px;
+}
+
+.reaction-score,
+.reaction-timer {
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+.reaction-card {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 42px;
+  border-radius: 32px;
+  background: rgba(255,255,255,0.96);
+  color: #0f172a;
+  text-align: center;
+  box-shadow: 0 24px 55px rgba(0,0,0,0.4);
+}
+
+.reaction-visual {
+  font-size: 4rem;
+  margin-bottom: 26px;
+  letter-spacing: 12px;
+}
+
+.reaction-card h1 {
+  font-size: 3rem;
+  margin-bottom: 34px;
+}
+
+.reaction-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 22px;
+}
+
+.reaction-btn {
+  padding: 28px;
+  border-radius: 24px;
+  border: 2px solid #93c5fd;
+  background: linear-gradient(135deg, #dbeafe, #f8fafc);
+  color: #0f172a;
+  font-size: 2rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.reaction-btn:hover {
+  transform: scale(1.04);
+  background: linear-gradient(135deg, #bfdbfe, #fde68a);
+}
+
+.reaction-results {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #020617, #1e1b4b);
+  color: white;
+  text-align: center;
+}
+
+.reaction-results h1 {
+  font-size: 3.5rem;
+}
+
+.reaction-final-score {
+  font-size: 6rem;
+  font-weight: 900;
+  color: #bfdbfe;
+}
