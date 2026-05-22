@@ -62,7 +62,7 @@ questions.hard.push(
   {
     sectionId: "mathNumberSense",
     section: "Math & Number Sense",
-    visual: "📊\n Sales: Mon 20 \n| Tue 35 |\n Wed 45",
+    visual: "📊\n Sales:\n | Mon 20 | \n| Tue 35 |\n| Wed 45 |",
     question: "How many total sales were there?",
     options: ["90", "95", "100", "105"],
     answer: 2,
