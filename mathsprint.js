@@ -14,7 +14,7 @@ function startMathSprint() {
       <div class="sprint-grid">
         ${sprintProblems.map((problem, index) => `
           <div class="sprint-problem">
-            <label>${index + 1}. ${problem.text}</label>
+            <label>${problem.text}</label>
             <input type="number" id="sprintAnswer${index}" />
           </div>
         `).join("")}
