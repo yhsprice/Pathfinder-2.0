@@ -1261,3 +1261,9 @@ body {
   margin: 20px 0;
   color: #bfdbfe;
 }
+
+.sprint-tip {
+  font-size: 1.1rem;
+  color: #bfdbfe;
+  margin-bottom: 20px;
+}
