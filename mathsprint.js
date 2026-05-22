@@ -20,6 +20,10 @@ function startMathSprint() {
         `).join("")}
       </div>
 
+ <p class="sprint-tip">
+      Tip: Press Tab to move quickly to the next answer box.
+      </p>
+      
       <button onclick="submitMathSprint()">Submit Sprint</button>
     </div>
   `;
