@@ -15,7 +15,11 @@ function startMathSprint() {
         ${sprintProblems.map((problem, index) => `
           <div class="sprint-problem">
             <label>${problem.text}</label>
-            <input type="number" id="sprintAnswer${index}" />
+           <input
+  type="number"
+  id="sprintAnswer${index}"
+  onkeydown="moveToNextSprint(event, ${index})"
+/>
           </div>
         `).join("")}
       </div>
@@ -128,4 +132,19 @@ function generateMathSprintProblems(count) {
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function moveToNextSprint(event, index) {
+
+  if (event.key === "Enter") {
+    event.preventDefault();
+
+    const nextInput = document.getElementById(
+      `sprintAnswer${index + 1}`
+    );
+
+    if (nextInput) {
+      nextInput.focus();
+    }
+  }
 }
