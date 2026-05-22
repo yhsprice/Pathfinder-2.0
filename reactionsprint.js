@@ -175,7 +175,7 @@ function generateReactionQuestions(count) {
         options: ["⬜", "🟦", "⬛", "🟥"],
         answer: 1
       })
-    }
+    },
 
     {
   question: "Which answer is closest?",
