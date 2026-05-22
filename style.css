@@ -1375,3 +1375,27 @@ body {
   font-size: 1.25rem;
   line-height: 1.65;
 }
+
+.streak-message {
+  margin-bottom: 24px;
+  padding: 16px;
+  border-radius: 20px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  animation: popIn 0.3s ease;
+}
+
+.streak-message.quick {
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+
+.streak-message.fire {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+.streak-message.elite {
+  background: #ddd6fe;
+  color: #4c1d95;
+}
