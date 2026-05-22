@@ -169,6 +169,62 @@ function generateReactionQuestions(count) {
       })
     }
 
+    {
+  question: "Which answer is closest?",
+  generate: () => {
+    const a = randomNumber(20, 80);
+    const b = randomNumber(20, 80);
+    const total = a + b;
+
+    return {
+      question: `${a} + ${b} is closest to:`,
+      options: [
+        total - 10,
+        total,
+        total + 10,
+        total + 20
+      ],
+      answer: 1
+    };
+  }
+},
+
+{
+  question: "Which tool fits the job?",
+  generate: () => ({
+    question: "Which tool tightens a bolt?",
+    options: ["Wrench", "Paintbrush", "Ruler", "Sponge"],
+    answer: 0
+  })
+},
+
+{
+  question: "Which word is spelled correctly?",
+  generate: () => ({
+    question: "Which word is spelled correctly?",
+    options: ["Recieve", "Receive", "Receeve", "Receve"],
+    answer: 1
+  })
+},
+
+{
+  question: "Which does NOT belong?",
+  generate: () => ({
+    question: "Which does NOT belong?",
+    options: ["Hammer", "Drill", "Wrench", "Banana"],
+    answer: 3
+  })
+},
+
+{
+  question: "Which is faster?",
+  generate: () => ({
+    question: "Which is faster?",
+    options: ["60 mph", "45 mph", "30 mph", "15 mph"],
+    answer: 0
+  })
+}
+
   ];
 
   while (questions.length < count) {
