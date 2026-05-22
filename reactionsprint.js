@@ -6,6 +6,7 @@ function startReactionSprint() {
 
   let currentIndex = 0;
   let score = 0;
+  let streak = 0;
   let timeLeft = 45;
   let sprintTimer = null;
 
@@ -61,6 +62,8 @@ function startReactionSprint() {
 
           <h1>${q.question}</h1>
 
+          ${getStreakMessage()}
+
           <div class="reaction-options">
 
             ${q.options.map((option, index) => `
@@ -82,8 +85,11 @@ function startReactionSprint() {
     window.answerReactionQuestion = function(index) {
 
       if (index === q.answer) {
-        score++;
-      }
+  score++;
+  streak++;
+} else {
+  streak = 0;
+}
 
       currentIndex++;
 
@@ -124,6 +130,35 @@ function startReactionSprint() {
       </div>
     `;
   }
+}
+
+function getStreakMessage() {
+
+  if (streak >= 8) {
+    return `
+      <div class="streak-message elite">
+        🧠 ELITE REACTION SPEED
+      </div>
+    `;
+  }
+
+  if (streak >= 5) {
+    return `
+      <div class="streak-message fire">
+        🔥 BRAIN ON FIRE
+      </div>
+    `;
+  }
+
+  if (streak >= 3) {
+    return `
+      <div class="streak-message quick">
+        ⚡ QUICK STREAK
+      </div>
+    `;
+  }
+
+  return "";
 }
 
 function generateReactionQuestions(count) {
