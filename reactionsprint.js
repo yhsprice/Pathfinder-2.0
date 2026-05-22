@@ -127,17 +127,14 @@ function startReactionSprint() {
 }
 
 function generateReactionQuestions(count) {
-
   const questions = [];
 
   const templates = [
-
     {
-      question: "Which number is larger?",
+      name: "largerNumber",
       generate: () => {
         const a = randomNumber(10, 99);
         const b = randomNumber(10, 99);
-
         return {
           question: "Which number is larger?",
           options: [a, b],
@@ -145,30 +142,24 @@ function generateReactionQuestions(count) {
         };
       }
     },
-
     {
-      question: "Which shape is different?",
+      name: "differentShape",
       generate: () => ({
         question: "Which shape is different?",
         options: ["🔺", "🔺", "🔵", "🔺"],
         answer: 2
       })
     },
-
     {
-      question: "Which is the better deal?",
+      name: "betterDeal",
       generate: () => ({
         question: "Which is the better deal?",
-        options: [
-          "1 for $5",
-          "2 for $8"
-        ],
+        options: ["1 for $5", "2 for $8"],
         answer: 1
       })
     },
-
     {
-      question: "Which finishes the pattern?",
+      name: "pattern",
       generate: () => ({
         visual: "⬜ 🟦 ⬜ 🟦 ⬜ ?",
         question: "Which comes next?",
@@ -176,76 +167,67 @@ function generateReactionQuestions(count) {
         answer: 1
       })
     },
-
     {
-  question: "Which answer is closest?",
-  generate: () => {
-    const a = randomNumber(20, 80);
-    const b = randomNumber(20, 80);
-    const total = a + b;
-
-    return {
-      question: `${a} + ${b} is closest to:`,
-      options: [
-        total - 10,
-        total,
-        total + 10,
-        total + 20
-      ],
-      answer: 1
-    };
-  }
-},
-
-{
-  question: "Which tool fits the job?",
-  generate: () => ({
-    question: "Which tool tightens a bolt?",
-    options: ["Wrench", "Paintbrush", "Ruler", "Sponge"],
-    answer: 0
-  })
-},
-
-{
-  question: "Which word is spelled correctly?",
-  generate: () => ({
-    question: "Which word is spelled correctly?",
-    options: ["Recieve", "Receive", "Receeve", "Receve"],
-    answer: 1
-  })
-},
-
-{
-  question: "Which does NOT belong?",
-  generate: () => ({
-    question: "Which does NOT belong?",
-    options: ["Hammer", "Drill", "Wrench", "Banana"],
-    answer: 3
-  })
-},
-
-{
-  question: "Which is faster?",
-  generate: () => ({
-    question: "Which is faster?",
-    options: ["60 mph", "45 mph", "30 mph", "15 mph"],
-    answer: 0
-  })
-}
-
+      name: "closestAnswer",
+      generate: () => {
+        const a = randomNumber(20, 80);
+        const b = randomNumber(20, 80);
+        const total = a + b;
+        return {
+          question: `${a} + ${b} is closest to:`,
+          options: [total - 10, total, total + 10, total + 20],
+          answer: 1
+        };
+      }
+    },
+    {
+      name: "tool",
+      generate: () => ({
+        question: "Which tool tightens a bolt?",
+        options: ["Wrench", "Paintbrush", "Ruler", "Sponge"],
+        answer: 0
+      })
+    },
+    {
+      name: "spelling",
+      generate: () => ({
+        question: "Which word is spelled correctly?",
+        options: ["Recieve", "Receive", "Receeve", "Receve"],
+        answer: 1
+      })
+    },
+    {
+      name: "oddOneOut",
+      generate: () => ({
+        question: "Which does NOT belong?",
+        options: ["Hammer", "Drill", "Wrench", "Banana"],
+        answer: 3
+      })
+    },
+    {
+      name: "speed",
+      generate: () => ({
+        question: "Which is faster?",
+        options: ["60 mph", "45 mph", "30 mph", "15 mph"],
+        answer: 0
+      })
+    }
   ];
 
+  let lastTemplateName = "";
+
   while (questions.length < count) {
+    let availableTemplates = templates.filter(
+      template => template.name !== lastTemplateName
+    );
 
     const template =
-      templates[Math.floor(Math.random() * templates.length)];
+      availableTemplates[Math.floor(Math.random() * availableTemplates.length)];
 
     questions.push(template.generate());
+    lastTemplateName = template.name;
   }
 
   return questions;
-}
-
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+} * (max - min + 1)) + min;
 }
