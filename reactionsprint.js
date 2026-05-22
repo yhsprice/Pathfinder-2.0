@@ -217,17 +217,20 @@ function generateReactionQuestions(count) {
   let lastTemplateName = "";
 
   while (questions.length < count) {
-    let availableTemplates = templates.filter(
-      template => template.name !== lastTemplateName
-    );
+  let availableTemplates = templates.filter(
+    template => template.name !== lastTemplateName
+  );
 
-    const template =
-      availableTemplates[Math.floor(Math.random() * availableTemplates.length)];
+  const template =
+    availableTemplates[Math.floor(Math.random() * availableTemplates.length)];
 
-    questions.push(template.generate());
-    lastTemplateName = template.name;
-  }
+  questions.push(template.generate());
+  lastTemplateName = template.name;
+}
 
- function randomNumber(min, max) {
+return questions;
+}
+
+function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
