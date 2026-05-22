@@ -6,7 +6,7 @@ function startReactionSprint() {
 
   let currentIndex = 0;
   let score = 0;
-  let timeLeft = 90;
+  let timeLeft = 45;
   let sprintTimer = null;
 
   showReactionQuestion();
