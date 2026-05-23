@@ -24,6 +24,19 @@ let timer = null;
 let timeLeft = 20;
 let maxTime = 20;
 
+function continuePathfinder() {
+  const nextSection = pathfinderSections.find(section =>
+    !pathfinderState.completedSections.includes(section.id)
+  );
+
+  if (nextSection) {
+    startSection(nextSection.id);
+    return;
+  }
+
+  startCareerClash();
+}
+
 function startSection(sectionId) {
   activeSection = sectionId;
   currentDifficulty = "easy";
