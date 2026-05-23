@@ -823,5 +823,21 @@ function startCareerClash() {
 
 function restartQuiz() {
   clearInterval(timer);
-  location.reload();
+
+  const container = document.querySelector(".home-screen");
+
+  container.innerHTML = `
+    <div class="hero-card">
+      <h1>Pathfinder 2.0</h1>
+      <p>
+        Discover your strengths, interests, work style, and career possibilities.
+      </p>
+
+      <button onclick="continuePathfinder()">
+        Start / Continue Pathfinder
+      </button>
+    </div>
+  `;
+
+  renderPathfinderDashboard();
 }
