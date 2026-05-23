@@ -1399,3 +1399,57 @@ body {
   background: #ddd6fe;
   color: #4c1d95;
 }
+
+#pathfinderDashboard {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 28px;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+  color: white;
+}
+
+.dashboard-section {
+  margin-bottom: 34px;
+}
+
+.dashboard-section h2 {
+  font-size: 2rem;
+  margin-bottom: 18px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+}
+
+.dashboard-card {
+  padding: 22px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(30,41,59,0.96), rgba(15,23,42,0.96));
+  border: 1px solid rgba(255,255,255,0.12);
+  text-align: center;
+}
+
+.dashboard-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.dashboard-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #9333ea, #2563eb);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.dashboard-card.career {
+  border-color: rgba(56,189,248,0.45);
+}
