@@ -38,7 +38,6 @@ function startSection(sectionId) {
   usedQuestions = [];
   traits = {};
   answered = false;
-  
 
   clearInterval(timer);
 
@@ -105,28 +104,26 @@ function showQuestion() {
   timeLeft = maxTime;
 
   if (engagementScore <= 70) {
-  maxQuestions = 8;
-}
+    maxQuestions = 8;
+  }
 
-if (engagementScore <= 55) {
-  maxQuestions = 6;
-}
+  if (engagementScore <= 55) {
+    maxQuestions = 6;
+  }
 
-if (engagementScore <= 40) {
-  maxQuestions = 5;
-}
-   
+  if (engagementScore <= 40) {
+    maxQuestions = 5;
+  }
+
   if (
-  totalQuestions >= maxQuestions ||
-  wrongAnswers >= maxWrongAnswers ||
-  engagementScore <= 40
-)
- 
- {
-  showResults();
-  return;
-}
-  
+    totalQuestions >= maxQuestions ||
+    wrongAnswers >= maxWrongAnswers ||
+    engagementScore <= 40
+  ) {
+    showResults();
+    return;
+  }
+
   currentQuestion = getRandomQuestion();
 
   if (!currentQuestion) {
@@ -159,21 +156,21 @@ if (engagementScore <= 40) {
 
         <h2>${currentQuestion.section}</h2>
 
-         ${currentQuestion.passage ? `
-        <div class="reading-passage">
-        ${currentQuestion.passage}
-        </div>
+        ${currentQuestion.passage ? `
+          <div class="reading-passage">
+            ${currentQuestion.passage}
+          </div>
         ` : ""}
 
-<h3 class="question-text">
-  ${currentQuestion.question}
-</h3>
+        <h3 class="question-text">
+          ${currentQuestion.question}
+        </h3>
 
-${currentQuestion.visual ? `
-  <div class="visual-pattern">
-    ${currentQuestion.visual}
-  </div>
-` : ""}
+        ${currentQuestion.visual ? `
+          <div class="visual-pattern">
+            ${currentQuestion.visual}
+          </div>
+        ` : ""}
 
         <div class="answers">
           ${currentShuffledOptions.map((option, index) => `
@@ -204,18 +201,17 @@ function startTimer() {
 
     const percent = (timeLeft / maxTime) * 100;
     timerFill.style.width = percent + "%";
-    
-      if (timeLeft <= 0) {
+
+    if (timeLeft <= 0) {
       clearInterval(timer);
-        timeoutAnswers++;
-        engagementScore -= 8;
+      timeoutAnswers++;
+      engagementScore -= 8;
 
       if (!answered) {
         answered = true;
         totalQuestions++;
 
         showTimeoutFeedback();
-
         moveDifficultyDown();
 
         setTimeout(() => {
@@ -275,50 +271,37 @@ function selectAnswer(selectedIndex) {
     button.classList.add("disabled");
   });
 
-if (currentQuestion.type === "careerChoice") {
-  const selectedCareers = currentQuestion.careerMap[selectedOption.originalIndex];
-  const selectedInterest = currentQuestion.interestMap[selectedOption.originalIndex];
+  if (currentQuestion.type === "careerChoice") {
+    const selectedCareers = currentQuestion.careerMap[selectedOption.originalIndex];
+    const selectedInterest = currentQuestion.interestMap[selectedOption.originalIndex];
 
-  if (!traits[selectedInterest]) {
-    traits[selectedInterest] = 0;
+    traits[selectedInterest] = (traits[selectedInterest] || 0) + 1;
+
+    selectedCareers.forEach(career => {
+      const careerKey = "career_" + career;
+      traits[careerKey] = (traits[careerKey] || 0) + 1;
+    });
+
+    totalQuestions++;
+
+    feedbackBox.innerHTML = `
+      <div class="feedback-box">
+        Choice saved. Pathfinder is learning what kind of work sounds meaningful to you.
+      </div>
+    `;
+
+    setTimeout(() => {
+      showQuestion();
+    }, 900);
+
+    return;
   }
 
-  traits[selectedInterest]++;
-
-  selectedCareers.forEach(career => {
-    const careerKey = "career_" + career;
-
-    if (!traits[careerKey]) {
-      traits[careerKey] = 0;
-    }
-
-    traits[careerKey]++;
-  });
-
-  totalQuestions++;
-
-  feedbackBox.innerHTML = `
-    <div class="feedback-box">
-      Choice saved. Pathfinder is learning what kind of work sounds meaningful to you.
-    </div>
-  `;
-
-  setTimeout(() => {
-    showQuestion();
-  }, 900);
-
-  return;
-}
-  
   if (currentQuestion.type === "interest") {
     const selectedInterest =
       currentQuestion.interestMap[selectedOption.originalIndex];
 
-    if (!traits[selectedInterest]) {
-      traits[selectedInterest] = 0;
-    }
-
-    traits[selectedInterest]++;
+    traits[selectedInterest] = (traits[selectedInterest] || 0) + 1;
 
     totalQuestions++;
 
@@ -346,11 +329,7 @@ if (currentQuestion.type === "careerChoice") {
   if (correct) {
     score++;
 
-    if (!traits[currentQuestion.trait]) {
-      traits[currentQuestion.trait] = 0;
-    }
-
-    traits[currentQuestion.trait]++;
+    traits[currentQuestion.trait] = (traits[currentQuestion.trait] || 0) + 1;
 
     buttons[selectedIndex].classList.add("correct");
 
@@ -407,6 +386,22 @@ function showResults() {
   const section = pathfinderSections.find(item => item.id === activeSection);
   const sectionTitle = section ? section.title : "Pathfinder";
 
+  Object.entries(traits).forEach(([trait, value]) => {
+    if (trait.startsWith("career_")) {
+      addCareerSignal(trait.replace("career_", ""), value);
+    } else {
+      addSkillSignal(trait, value);
+    }
+  });
+
+  markSectionComplete(activeSection, {
+    title: sectionTitle,
+    score: percent,
+    missed: wrongAnswers
+  });
+
+  renderPathfinderDashboard();
+
   let message = "";
 
   if (percent >= 90) {
@@ -419,59 +414,59 @@ function showResults() {
     message = "This may be an area where more practice or a different learning style helps.";
   }
 
-const skillTraits = [
-  "logic",
-  "patternRecognition",
-  "mathReasoning",
-  "numberSense",
-  "readingComprehension",
-  "grammar",
-  "spelling",
-  "writtenCommunication",
-  "attentionToDetail",
-  "errorDetection",
-  "mechanicalReasoning",
-  "spatialReasoning",
-  "practicalThinking",
-  "solutionThinking",
-  "socialJudgment",
-  "communication",
-  "teamwork",
-  "creativity",
-  "ideaGeneration",
-  "adaptability",
-  "workStyle",
-  "pressureResponse",
-  "persistence",
-  "careerAwareness",
-  "interestFit",
-  "realisticFit"
-];
+  const skillTraits = [
+    "logic",
+    "patternRecognition",
+    "mathReasoning",
+    "numberSense",
+    "readingComprehension",
+    "grammar",
+    "spelling",
+    "writtenCommunication",
+    "attentionToDetail",
+    "errorDetection",
+    "mechanicalReasoning",
+    "spatialReasoning",
+    "practicalThinking",
+    "solutionThinking",
+    "socialJudgment",
+    "communication",
+    "teamwork",
+    "creativity",
+    "ideaGeneration",
+    "adaptability",
+    "workStyle",
+    "pressureResponse",
+    "persistence",
+    "careerAwareness",
+    "interestFit",
+    "realisticFit"
+  ];
 
-const interestTraits = [
-  "handsOn",
-  "helpingPeople",
-  "creative",
-  "data",
-  "active",
-  "independent",
-  "teamBased",
-  "technology"
-];
+  const interestTraits = [
+    "handsOn",
+    "helpingPeople",
+    "creative",
+    "data",
+    "active",
+    "independent",
+    "teamBased",
+    "technology"
+  ];
 
-const skillResults = Object.entries(traits)
-  .filter(([trait, value]) => value > 0 && skillTraits.includes(trait))
-  .map(([trait, value]) => `
-    <p><strong>${formatTraitName(trait)}:</strong> ${value}</p>
-  `)
-  .join("");
+  const skillResults = Object.entries(traits)
+    .filter(([trait, value]) => value > 0 && skillTraits.includes(trait))
+    .map(([trait, value]) => `
+      <p><strong>${formatTraitName(trait)}:</strong> ${value}</p>
+    `)
+    .join("");
 
-const interestResults = Object.entries(traits)
-  .filter(([trait, value]) => value > 0 && interestTraits.includes(trait))
-  .map(([trait, value]) => `
-    <p><strong>${formatTraitName(trait)}:</strong> ${value}</p>
-  `)
-  .join("");
+  const interestResults = Object.entries(traits)
+    .filter(([trait, value]) => value > 0 && interestTraits.includes(trait))
+    .map(([trait, value]) => `
+      <p><strong>${formatTraitName(trait)}:</strong> ${value}</p>
+    `)
+    .join("");
 
   container.innerHTML = `
     <div class="results-card">
@@ -482,36 +477,34 @@ const interestResults = Object.entries(traits)
         ${percent}%
       </div>
 
-      <p>
-  Questions Missed: ${wrongAnswers}
-</p>
+      <p>Questions Missed: ${wrongAnswers}</p>
 
       <h2>${message}</h2>
 
       <p>
-  Pathfinder tracked your answers, difficulty level, timing, and skill patterns in this section.
-</p>
+        Pathfinder tracked your answers, difficulty level, timing, and skill patterns in this section.
+      </p>
 
-<div class="insight-box">
-  <h3>What this suggests</h3>
-  <p>
-    This section gives an early signal of where your abilities, problem-solving style,
-    and interests may be strongest. It is not meant to label you — it helps point you
-    toward career areas worth exploring.
-  </p>
-</div>
+      <div class="insight-box">
+        <h3>What this suggests</h3>
+        <p>
+          This section gives an early signal of where your abilities, problem-solving style,
+          and interests may be strongest. It is not meant to label you — it helps point you
+          toward career areas worth exploring.
+        </p>
+      </div>
 
       <div class="trait-results">
-  <h3>Skill Signals</h3>
-  ${skillResults || "<p>No skill signals recorded yet.</p>"}
+        <h3>Skill Signals</h3>
+        ${skillResults || "<p>No skill signals recorded yet.</p>"}
 
-   <h3>Interest Signals</h3>
-  ${interestResults || "<p>No interest signals recorded yet.</p>"}
-</div>
+        <h3>Interest Signals</h3>
+        ${interestResults || "<p>No interest signals recorded yet.</p>"}
+      </div>
 
-${getNextSectionButton()}
+      ${getNextSectionButton()}
 
-   </div>
+    </div>
   `;
 }
 
@@ -599,7 +592,7 @@ function startCareerClash() {
 
   function showClash() {
     clashLocked = false;
-    
+
     const challenger = challengers[challengerIndex];
     const container = document.querySelector(".home-screen");
 
@@ -659,8 +652,8 @@ function startCareerClash() {
 
         <div class="choose-button">
           ${side === "champion"
-          ? "✔ Do You Want To Do This?"
-          : "⭐ Or Do You Like This Better?"}
+            ? "✔ Do You Want To Do This?"
+            : "⭐ Or Do You Like This Better?"}
         </div>
 
       </button>
@@ -669,13 +662,13 @@ function startCareerClash() {
 
   window.chooseCareerClash = function(side) {
     if (clashLocked) return;
-clashLocked = true;
+    clashLocked = true;
 
     document.querySelectorAll(".career-clash-card").forEach(card => {
-  card.disabled = true;
-  card.classList.add("disabled");
-});
-    
+      card.disabled = true;
+      card.classList.add("disabled");
+    });
+
     const challenger = challengers[challengerIndex];
 
     const chosen = side === "champion" ? currentChampion : challenger;
@@ -683,101 +676,104 @@ clashLocked = true;
 
     chosen.careers.forEach(career => {
       clashResults[career] = (clashResults[career] || 0) + 1;
+      addCareerSignal(career, 1);
     });
+
+    addInterestSignal(chosen.interest, 1);
 
     clashResults[chosen.title] = (clashResults[chosen.title] || 0) + 1;
 
     document.getElementById("feedbackBox").innerHTML = `
-  <div class="clash-feedback">
-    You chose <strong>${chosen.title}</strong>
-    over <strong>${notChosen.title}</strong>.
-  </div>
-`;
+      <div class="clash-feedback">
+        You chose <strong>${chosen.title}</strong>
+        over <strong>${notChosen.title}</strong>.
+      </div>
+    `;
 
     currentChampion = chosen;
-    
-     setTimeout(() => {
-  nextCareerClash();
-}, 1400);
-    
+
+    renderPathfinderDashboard();
+
+    setTimeout(() => {
+      nextCareerClash();
+    }, 1400);
   };
 
-   window.nextCareerClash = function() {
-  clashRounds++;
-  challengerIndex++;
-  showClash();
-};
+  window.nextCareerClash = function() {
+    clashRounds++;
+    challengerIndex++;
+    showClash();
+  };
 
-function getPathfinderNotice() {
+  function getPathfinderNotice() {
+    const topCareer = Object.entries(clashResults)
+      .sort((a, b) => b[1] - a[1])[0];
 
-  const topCareer = Object.entries(clashResults)
-    .sort((a, b) => b[1] - a[1])[0];
+    if (!topCareer) return "";
 
-  if (!topCareer) return "";
+    const name = topCareer[0];
 
-  const name = topCareer[0];
+    if (
+      name.includes("Nurse") ||
+      name.includes("Patient") ||
+      name.includes("Medical") ||
+      name.includes("Therapist")
+    ) {
+      return `
+        <div class="pathfinder-notice healthcare">
+          🩺 Pathfinder Notice:
+          You repeatedly choose helping-focused healthcare environments.
+        </div>
+      `;
+    }
 
-  if (
-    name.includes("Nurse") ||
-    name.includes("Patient") ||
-    name.includes("Medical") ||
-    name.includes("Therapist")
-  ) {
+    if (
+      name.includes("Electrician") ||
+      name.includes("HVAC") ||
+      name.includes("Welder") ||
+      name.includes("Technician")
+    ) {
+      return `
+        <div class="pathfinder-notice trades">
+          🛠 Pathfinder Notice:
+          You consistently prefer hands-on technical problem solving.
+        </div>
+      `;
+    }
+
+    if (
+      name.includes("Designer") ||
+      name.includes("Creator") ||
+      name.includes("Video")
+    ) {
+      return `
+        <div class="pathfinder-notice creative">
+          🎨 Pathfinder Notice:
+          Creative and visual career paths are standing out strongly.
+        </div>
+      `;
+    }
+
+    if (
+      name.includes("Analyst") ||
+      name.includes("Cyber") ||
+      name.includes("Software") ||
+      name.includes("Data")
+    ) {
+      return `
+        <div class="pathfinder-notice technology">
+          💻 Pathfinder Notice:
+          Pathfinder sees strong interest in analytical and technology-focused work.
+        </div>
+      `;
+    }
+
     return `
-      <div class="pathfinder-notice healthcare">
-        🩺 Pathfinder Notice:
-        You repeatedly choose helping-focused healthcare environments.
+      <div class="pathfinder-notice">
+        🧭 Pathfinder is beginning to notice consistent career preference patterns.
       </div>
     `;
   }
-
-  if (
-    name.includes("Electrician") ||
-    name.includes("HVAC") ||
-    name.includes("Welder") ||
-    name.includes("Technician")
-  ) {
-    return `
-      <div class="pathfinder-notice trades">
-        🛠 Pathfinder Notice:
-        You consistently prefer hands-on technical problem solving.
-      </div>
-    `;
-  }
-
-  if (
-    name.includes("Designer") ||
-    name.includes("Creator") ||
-    name.includes("Video")
-  ) {
-    return `
-      <div class="pathfinder-notice creative">
-        🎨 Pathfinder Notice:
-        Creative and visual career paths are standing out strongly.
-      </div>
-    `;
-  }
-
-  if (
-    name.includes("Analyst") ||
-    name.includes("Cyber") ||
-    name.includes("Software") ||
-    name.includes("Data")
-  ) {
-    return `
-      <div class="pathfinder-notice technology">
-        💻 Pathfinder Notice:
-        Pathfinder sees strong interest in analytical and technology-focused work.
-      </div>
-    `;
-  }
-
-  return `
-    <div class="pathfinder-notice">
-      🧭 Pathfinder is beginning to notice consistent career preference patterns.
-    </div>
-  `;
-}
 
   function showCareerClashResults(container) {
     const topResults = Object.entries(clashResults)
@@ -812,7 +808,7 @@ function getPathfinderNotice() {
   showClash();
 }
 
- function restartQuiz() {
+function restartQuiz() {
   clearInterval(timer);
   location.reload();
 }
