@@ -33,20 +33,52 @@ function showScreen(screenId) {
   document.getElementById(screenId).style.display = "block";
 }
 
-
 function continuePathfinder() {
-  const nextSection = pathfinderSections.find(section =>
-    !pathfinderState.completedSections.includes(section.id)
-  );
-
-  if (nextSection) {
-    startSection(nextSection.id);
-    return;
-  }
-
-  startCareerClash();
+  showProgressScreen();
 }
 
+ function showProgressScreen() {
+  clearInterval(timer);
+
+  const progressScreen = document.getElementById("progressScreen");
+  const dashboard = document.getElementById("pathfinderDashboard");
+
+  const sectionCards = pathfinderSections.map(section => {
+    const completed = pathfinderState.completedSections.includes(section.id);
+
+    return `
+      <div class="progress-section-card ${completed ? "complete" : "incomplete"}">
+        <h3>${completed ? "✅" : "⬜"} ${section.title}</h3>
+        <p>${completed ? "Completed" : "Not completed yet"}</p>
+
+        <button onclick="startSection('${section.id}')">
+          ${completed ? "Review / Retake" : "Start This Section"}
+        </button>
+      </div>
+    `;
+  }).join("");
+
+  progressScreen.innerHTML = `
+    <div class="results-card">
+      <h1>Your Pathfinder Progress</h1>
+
+      <p>
+        Choose a section to continue. Completed sections are marked with a check.
+      </p>
+
+      <div class="progress-section-list">
+        ${sectionCards}
+      </div>
+
+      <button onclick="restartQuiz()" class="secondary-btn">
+        Back to Home
+      </button>
+    </div>
+  `;
+
+  dashboard.style.display = "none";
+  showScreen("progressScreen");
+}
 function startSection(sectionId) {
   activeSection = sectionId;
   currentDifficulty = "easy";
