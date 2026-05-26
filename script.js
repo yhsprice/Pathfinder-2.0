@@ -24,6 +24,16 @@ let timer = null;
 let timeLeft = 20;
 let maxTime = 20;
 
+function showScreen(screenId) {
+
+  document.getElementById("progressScreen").style.display = "none";
+  document.getElementById("quizScreen").style.display = "none";
+  document.getElementById("pathfinderDashboard").style.display = "none";
+
+  document.getElementById(screenId).style.display = "block";
+}
+
+
 function continuePathfinder() {
   const nextSection = pathfinderSections.find(section =>
     !pathfinderState.completedSections.includes(section.id)
@@ -717,15 +727,6 @@ function startCareerClash() {
     challengerIndex++;
     showClash();
   };
-
-  function showScreen(screenId) {
-
-  document.getElementById("progressScreen").style.display = "none";
-  document.getElementById("quizScreen").style.display = "none";
-  document.getElementById("pathfinderDashboard").style.display = "none";
-
-  document.getElementById(screenId).style.display = "block";
-}
 
   function getPathfinderNotice() {
     const topCareer = Object.entries(clashResults)
