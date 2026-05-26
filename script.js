@@ -718,6 +718,15 @@ function startCareerClash() {
     showClash();
   };
 
+  function showScreen(screenId) {
+
+  document.getElementById("progressScreen").style.display = "none";
+  document.getElementById("quizScreen").style.display = "none";
+  document.getElementById("pathfinderDashboard").style.display = "none";
+
+  document.getElementById(screenId).style.display = "block";
+}
+
   function getPathfinderNotice() {
     const topCareer = Object.entries(clashResults)
       .sort((a, b) => b[1] - a[1])[0];
