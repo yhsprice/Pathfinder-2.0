@@ -113,7 +113,7 @@ function showSectionIntro(sectionId) {
   const title = section ? section.title : "Pathfinder Section";
   const intro = section ? section.intro : "This section analyzes your skills and thinking patterns.";
 
-  const container = document.querySelector(".home-screen");
+ const container = document.getElementById("quizScreen");
 
   container.innerHTML = `
     <div class="results-card">
@@ -131,7 +131,10 @@ function showSectionIntro(sectionId) {
       </button>
     </div>
   `;
-}
+
+  showScreen("quizScreen");
+
+    }
 
 function getRandomQuestion() {
   let pool = questions[currentDifficulty].filter(
@@ -189,7 +192,7 @@ function showQuestion() {
   currentShuffledOptions = shuffleOptions(currentQuestion);
 
   const progressPercent = Math.round((totalQuestions / maxQuestions) * 100);
-  const container = document.querySelector(".home-screen");
+  const container = document.getElementById("quizScreen");
 
   questionStartTime = Date.now();
 
@@ -240,6 +243,8 @@ function showQuestion() {
       </div>
     </div>
   `;
+
+  showScreen("quizScreen");
 
   startTimer();
 }
